@@ -154,8 +154,21 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
                 {
                     documentInfoContainer = viewerImageHandler.GetDocumentInfo(documentGuid, documentInfoOptions);
                 }
+                List<DocumentDescriptionEntity> pagesDescription = new List<DocumentDescriptionEntity>();
+                // get info about each document page
+                for (int i = 0; i < documentInfoContainer.Pages.Count; i++)
+                {
+                    //initiate custom Document description object
+                    DocumentDescriptionEntity description = new DocumentDescriptionEntity();
+
+                    // set current page info for result
+                    description.height = documentInfoContainer.Pages[i].Height;
+                    description.width = documentInfoContainer.Pages[i].Width;
+                    description.number = i + 1;
+                    pagesDescription.Add(description);
+                }
                 // return document description
-                return Request.CreateResponse(HttpStatusCode.OK, documentInfoContainer.Pages);
+                return Request.CreateResponse(HttpStatusCode.OK, pagesDescription);
             }
             catch (InvalidPasswordException ex)
             {
