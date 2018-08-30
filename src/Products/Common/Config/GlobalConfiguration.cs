@@ -12,6 +12,7 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
         public ApplicationConfiguration Application;
         public SignatureConfiguration Signature;
         public ViewerConfiguration Viewer;
+        public CommonConfiguration Common;
 
         /// <summary>
         /// Get all configurations
@@ -22,6 +23,7 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
             Application = new ApplicationConfiguration();
             Signature = new SignatureConfiguration();
             Viewer = new ViewerConfiguration();
+            Common = new CommonConfiguration();
         }
     }
 }
