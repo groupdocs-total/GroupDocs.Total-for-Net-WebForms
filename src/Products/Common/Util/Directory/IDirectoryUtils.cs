@@ -1,4 +1,4 @@
-﻿namespace GroupDocs.Total.WebForms.Products.Signature.Util.Directory
+﻿namespace GroupDocs.Total.WebForms.Products.Common.Util.Directory
 {
     /// <summary>
     /// IDirectoryUtils

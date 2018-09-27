@@ -1,4 +1,5 @@
-﻿using GroupDocs.Total.WebForms.Products.Signature.Config;
+﻿using GroupDocs.Total.WebForms.Products.Annotation.Config;
+using GroupDocs.Total.WebForms.Products.Signature.Config;
 using GroupDocs.Total.WebForms.Products.Viewer.Config;
 
 namespace GroupDocs.Total.WebForms.Products.Common.Config
@@ -13,6 +14,7 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
         public SignatureConfiguration Signature;
         public ViewerConfiguration Viewer;
         public CommonConfiguration Common;
+        public AnnotationConfiguration Annotation;
 
         /// <summary>
         /// Get all configurations
@@ -24,6 +26,7 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
             Signature = new SignatureConfiguration();
             Viewer = new ViewerConfiguration();
             Common = new CommonConfiguration();
+            Annotation = new AnnotationConfiguration();
         }
     }
 }
