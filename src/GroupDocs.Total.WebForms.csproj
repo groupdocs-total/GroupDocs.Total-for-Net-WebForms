@@ -47,6 +47,10 @@
       <HintPath>..\packages\GroupDocs.Annotation.18.8.0\lib\GroupDocs.Annotation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GroupDocs.Comparison, Version=18.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\GroupDocs.Comparison.18.9.0\lib\GroupDocs.Comparison.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="GroupDocs.Signature, Version=18.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\GroupDocs.Signature.18.6.0\lib\GroupDocs.Signature.dll</HintPath>
       <Private>True</Private>
@@ -168,6 +172,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Comparison.aspx" />
     <Content Include="Resources\annotation\css\annotation.css" />
     <Content Include="Resources\annotation\css\annotation.mobile.css" />
     <Content Include="Resources\annotation\images\area.png" />
@@ -204,6 +209,14 @@
     <Content Include="Resources\annotation\js\svg.draw.js" />
     <Content Include="Resources\annotation\js\svg.min.js" />
     <Content Include="Annotation.aspx" />
+    <Content Include="Resources\comparison\css\all.css" />
+    <Content Include="Resources\comparison\css\comparison.css" />
+    <Content Include="Resources\comparison\css\comparison.mobile.css" />
+    <Content Include="Resources\comparison\images\logo.png" />
+    <Content Include="Resources\comparison\js\comparison.js" />
+    <Content Include="Resources\comparison\webfonts\fa-brands-400.svg" />
+    <Content Include="Resources\comparison\webfonts\fa-regular-400.svg" />
+    <Content Include="Resources\comparison\webfonts\fa-solid-900.svg" />
     <Content Include="Signature.aspx" />
     <Content Include="Total.aspx" />
     <Content Include="Global.asax" />
@@ -277,6 +290,18 @@
     <Content Include="Viewer.aspx" />
     <Content Include="Web.config" />
     <Content Include="packages.config" />
+    <Content Include="Resources\comparison\webfonts\fa-brands-400.eot" />
+    <Content Include="Resources\comparison\webfonts\fa-brands-400.ttf" />
+    <Content Include="Resources\comparison\webfonts\fa-brands-400.woff" />
+    <Content Include="Resources\comparison\webfonts\fa-brands-400.woff2" />
+    <Content Include="Resources\comparison\webfonts\fa-regular-400.eot" />
+    <Content Include="Resources\comparison\webfonts\fa-regular-400.ttf" />
+    <Content Include="Resources\comparison\webfonts\fa-regular-400.woff" />
+    <Content Include="Resources\comparison\webfonts\fa-regular-400.woff2" />
+    <Content Include="Resources\comparison\webfonts\fa-solid-900.eot" />
+    <Content Include="Resources\comparison\webfonts\fa-solid-900.ttf" />
+    <Content Include="Resources\comparison\webfonts\fa-solid-900.woff" />
+    <Content Include="Resources\comparison\webfonts\fa-solid-900.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -285,6 +310,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparison.aspx.cs">
+      <DependentUpon>Comparison.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comparison.aspx.designer.cs">
+      <DependentUpon>Comparison.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AppDomainGenerator\DomainGenerator.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -329,6 +361,14 @@
     <Compile Include="Products\Common\Entity\Web\PostedDataEntity.cs" />
     <Compile Include="Products\Common\Entity\Web\UploadedDocumentEntity.cs" />
     <Compile Include="Products\Common\Resources\Resources.cs" />
+    <Compile Include="Products\Comparison\Config\ComparisonConfiguration.cs" />
+    <Compile Include="Products\Comparison\Controllers\ComparisonApiController.cs" />
+    <Compile Include="Products\Comparison\Model\Request\CompareFileDataRequest.cs" />
+    <Compile Include="Products\Comparison\Model\Request\CompareRequest.cs" />
+    <Compile Include="Products\Comparison\Model\Response\CompareResultResponse.cs" />
+    <Compile Include="Products\Comparison\Service\ComparisonServiceImpl.cs" />
+    <Compile Include="Products\Comparison\Service\IComparisonService.cs" />
+    <Compile Include="Products\Comparison\Util\TransformFiles.cs" />
     <Compile Include="Products\Signature\Config\SignatureConfiguration.cs" />
     <Compile Include="Products\Signature\Controllers\SignatureApiController.cs" />
     <Compile Include="Products\Signature\Entity\Directory\BarcodeDataDirectoryEntity.cs" />
@@ -355,8 +395,8 @@
     <Compile Include="Products\Signature\Signer\QrCodeSigner.cs" />
     <Compile Include="Products\Signature\Signer\StampSigner.cs" />
     <Compile Include="Products\Signature\Signer\TextSigner.cs" />
-    <Compile Include="Products\Signature\Util\Comparator\FileNameComparator.cs" />
-    <Compile Include="Products\Signature\Util\Comparator\FileTypeComparator.cs" />
+    <Compile Include="Products\Common\Util\Comparator\FileNameComparator.cs" />
+    <Compile Include="Products\Common\Util\Comparator\FileTypeComparator.cs" />
     <Compile Include="Products\Signature\Util\Directory\DataDirectoryUtils.cs" />
     <Compile Include="Products\Signature\Util\Directory\DirectoryUtils.cs" />
     <Compile Include="Products\Signature\Util\Directory\FilesDirectoryUtils.cs" />

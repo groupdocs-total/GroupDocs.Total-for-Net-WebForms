@@ -15,6 +15,7 @@ namespace GroupDocs.Total.WebForms
             string viewerAssemblyName = "GroupDocs.Viewer.dll";
             string signatureAssemblyName = "GroupDocs.Signature.dll";
             string annotationAssemblyName = "GroupDocs.Annotation.dll";
+            string comparisonAssemblyName = "GroupDocs.Comparison.dll";
             // set GroupDocs.Viewer license
             DomainGenerator viewerDomainGenerator = new DomainGenerator(viewerAssemblyName, "GroupDocs.Viewer.License");
             viewerDomainGenerator.SetViewerLicense(viewerDomainGenerator.CurrentType);
@@ -24,6 +25,9 @@ namespace GroupDocs.Total.WebForms
             // set GroupDocs.Annotation license
             DomainGenerator annotationDomainGenerator = new DomainGenerator(annotationAssemblyName, "GroupDocs.Annotation.Common.License.License");
             annotationDomainGenerator.SetAnnotationLicense(annotationDomainGenerator.CurrentType);
+            // set GroupDocs.Comparison license
+            DomainGenerator comparisonDomainGenerator = new DomainGenerator(comparisonAssemblyName, "GroupDocs.Comparison.Common.License.License");
+            comparisonDomainGenerator.SetComparisonLicense(comparisonDomainGenerator.CurrentType);
 
             // Code that runs on application startup
             GlobalConfiguration.Configure(WebApiConfig.Register);

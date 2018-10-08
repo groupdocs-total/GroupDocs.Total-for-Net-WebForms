@@ -1,5 +1,5 @@
 ﻿using GroupDocs.Total.WebForms.Products.Signature.Entity.Web;
-using GroupDocs.Total.WebForms.Products.Signature.Util.Comparator;
+using GroupDocs.Total.WebForms.Products.Common.Util.Comparator;
 using System;
 using System.Collections.Generic;
 using System.IO;
