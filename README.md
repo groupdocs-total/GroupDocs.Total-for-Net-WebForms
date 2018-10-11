@@ -101,6 +101,25 @@ Coming soon
 - Multi-language support for displaying errors
 - Cross-browser support (Safari, Chrome, Opera, Firefox)
 - Cross-platform support (Windows, Linux, MacOS)
+#### GroupDocs.Comparison
+- Clean, modern and intuitive design
+- Easily switchable colour theme (create your own colour theme in 5 minutes)
+- Responsive design
+- Mobile support (open application on any mobile device)
+- HTML and image modes
+- Fully customizable navigation panel
+- Compare documents
+- Multi-compare several documents
+- Compare password protected documents
+- Upload documents
+- Display clearly visible differences
+- Download comparison results
+- Print comparison results
+- Smooth document scrolling
+- Preload pages for faster document rendering
+- Multi-language support for displaying errors
+- Cross-browser support (Safari, Chrome, Opera, Firefox)
+- Cross-platform support (Windows, Linux, MacOS)
 
 ## How to run
 1. Download/Clone GroupDocs.Total for .NET Web.Forms Sample.
