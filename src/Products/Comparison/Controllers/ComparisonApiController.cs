@@ -14,7 +14,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
-namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
+namespace GroupDocs.Total.WebForms.Products.Comparison.Controllers
 {
     /// <summary>
     /// SignatureApiController
