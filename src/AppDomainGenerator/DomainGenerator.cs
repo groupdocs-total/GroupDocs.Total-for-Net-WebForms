@@ -65,7 +65,7 @@ namespace GroupDocs.Total.WebForms.AppDomainGenerator
         /// </summary>
         /// <param name="type">Type</param>
         public void SetViewerLicense(Type type)
-        {
+        {                       
             // Initiate License class
             var obj = (GroupDocs.Viewer.License)Activator.CreateInstance(type);
             // Set license

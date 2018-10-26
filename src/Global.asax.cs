@@ -11,14 +11,10 @@ namespace GroupDocs.Total.WebForms
         void Application_Start(object sender, EventArgs e)
         {
             // Fix required to use several GroupDocs products in one project.
-            // Set GroupDocs products assemblies names
-            string viewerAssemblyName = "GroupDocs.Viewer.dll";
+            // Set GroupDocs products assemblies names           
             string signatureAssemblyName = "GroupDocs.Signature.dll";
             string annotationAssemblyName = "GroupDocs.Annotation.dll";
-            string comparisonAssemblyName = "GroupDocs.Comparison.dll";
-            // set GroupDocs.Viewer license
-            DomainGenerator viewerDomainGenerator = new DomainGenerator(viewerAssemblyName, "GroupDocs.Viewer.License");
-            viewerDomainGenerator.SetViewerLicense(viewerDomainGenerator.CurrentType);
+            string comparisonAssemblyName = "GroupDocs.Comparison.dll";          
             // set GroupDocs.Signature license
             DomainGenerator signatureDomainGenerator = new DomainGenerator(signatureAssemblyName, "GroupDocs.Signature.License");
             signatureDomainGenerator.SetSignatureLicense(signatureDomainGenerator.CurrentType);
