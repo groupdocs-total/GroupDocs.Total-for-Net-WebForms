@@ -8,7 +8,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Viewer for .NET WebForms</title>
-    <link type="text/css" rel="stylesheet" href="/resources/common/css/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="/resources/common/css/all.min.css">
+    <link type="text/css" rel="stylesheet" href="/resources/common/css/v4-shims.min.css">
     <link type="text/css" rel="stylesheet" href="/resources/common/css/swiper.min.css">
     <link type="text/css" rel="stylesheet" href="/resources/common/css/circle-progress.css" />
     <link type="text/css" rel="stylesheet" href="/resources/viewer/css/viewer.css" />
