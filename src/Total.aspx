@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="GroupDocs.Total.WebForms" Language="C#" AutoEventWireup="true" CodeBehind="Total.aspx.cs" Inherits="GroupDocs.Total.WebForms._Default" %>
 
-    <link type="text/css" rel="stylesheet" href="/resources/common/css/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="/resources/common/css/all.min.css">
+    <link type="text/css" rel="stylesheet" href="/resources/common/css/v4-shims.min.css">
     <link type="text/css" rel="stylesheet" href="/resources/total/css/total.css" />
 
     <div id="container">
