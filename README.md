@@ -1,5 +1,5 @@
 # GroupDocs.Total for .NET Web.Forms Example
-###### version 0.4.8
+###### version 0.4.9
 
 
 ## System Requirements
@@ -126,10 +126,16 @@ Coming soon
 2. Extract/Copy GroupDocs.Total for .NET Web.Forms Sample to working directory.
 3. Navigate to GroupDocs.Total for .NET Web.Forms Sample root directory.
 4. Open solution in the VisualStudio.
-5. Update parameters in `web.config` to meet your requirements.
+5. Update common parameters in `web.config` and example related properties in the 'configuration.yml' to meet your requirements.
 6. Go to `http://localhost:{PORT}/`.
 PORT - port number specified in `web.config` (by default http://localhost:8080).
 
+## How to run in standalone mode
+1. Navigate to GroupDocs.Total for .NET Web.Forms Sample root directory.
+5. Update common parameters in `web.config` and example related properties in the 'configuration.yml' to meet your requirements.
+3. Execute the 'LaunchServer.bat' file.
+4. Go to `http://localhost:{PORT}/`.
+PORT - port number specified in `web.config` and in 'LaunchServer.bat'(by default http://localhost:8080).
 
 ## Resources
 - **Website:** [www.groupdocs.com](http://www.groupdocs.com)
