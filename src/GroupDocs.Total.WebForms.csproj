@@ -20,7 +20,7 @@
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -140,39 +140,18 @@
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Owin">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin">
-      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Host.SystemWeb">
-      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security">
-      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Facebook">
-      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies">
-      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Google">
-      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
-      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
-    </Reference>
-    <Reference Include="Owin">
-      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.OAuth">
-      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Comparison.aspx" />
+    <Content Include="Mono.Security.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mono.Security.Win32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mono.WebServer2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\annotation\css\annotation.css" />
     <Content Include="Resources\annotation\css\annotation.mobile.css" />
     <Content Include="Resources\annotation\images\area.png" />
@@ -304,6 +283,9 @@
     <Content Include="Resources\comparison\webfonts\fa-solid-900.ttf" />
     <Content Include="Resources\comparison\webfonts\fa-solid-900.woff" />
     <Content Include="Resources\comparison\webfonts\fa-solid-900.woff2" />
+    <Content Include="xsp4.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -483,5 +465,24 @@
     <Exec Command="..\packages\NodeBin.5.2.0\node-5.2.0\node.exe .\node_modules\gulp\bin\gulp.js build" />
   </Target>
   <Target Name="AfterBuild">
+    <ItemGroup>
+      <ZipFiles Include="$(OutDir)**\*.*" />
+      <ZipFiles Include="$(ProjectDir)Resources\**\*.*" />
+      <ZipFiles Include="$(ProjectDir)Views\**\*.*" />
+      <ZipFiles Include="$(ProjectDir)Global.asax" />
+      <ZipFiles Include="$(ProjectDir)Global.asax.cs" />
+      <ZipFiles Include="$(ProjectDir)Web.config" />
+      <ZipFiles Include="$(ProjectDir)configuration.yml" />
+      <ZipFiles Include="$(ProjectDir)*.aspx" />
+      <ZipFiles Include="$(ProjectDir)*.aspx.cs" />
+	  <ZipFiles Include="$(ProjectDir)Startup.cs" />
+      <ZipFiles Include="$(ProjectDir)LaunchServer.bat" />
+      <ZipFiles Include="$(ProjectDir)xsp4.exe" />
+      <ZipFiles Include="$(ProjectDir)Mono.Security.dll" />
+      <ZipFiles Include="$(ProjectDir)Mono.Security.Win32.dll" />
+      <ZipFiles Include="$(ProjectDir)Mono.WebServer2.dll" />
+    </ItemGroup>
+    <Zip Files="@(ZipFiles)" WorkingDirectory="$(ProjectDir)" ZipFileName="GroupDocs.Total.Web.Forms.zip" />
   </Target>
+  <Import Project="..\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
 </Project>
