@@ -154,7 +154,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                     documentType = "diagram";
                 }
                 // check if document contains annotations
-                AnnotationInfo[] annotations = GetAnnotations(documentGuid, documentType);
+                AnnotationInfo[] annotations = GetAnnotations(documentGuid, documentType, password);
                 // initiate pages description list
                 List<AnnotatedDocumentEntity> pagesDescription = new List<AnnotatedDocumentEntity>();
                 // get info about each document page
@@ -443,22 +443,29 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                     catch (NotSupportedException ex)
                     {
                         notSupportedException = ex;
+                        continue;
                     }
                     catch (Exception ex)
                     {
                         throw new Exception(ex.Message, ex);
                     }
                 }
-                // check if annotations array contains at least one annotation to add
-                if (annotations.Count > 0)
-                {
-                    // Add annotation to the document
-                    DocumentType type = DocumentTypesConverter.GetDocumentType(documentType);
-                    // Save result stream to file.
 
-                    string path = GlobalConfiguration.Annotation.OutputDirectory + Path.DirectorySeparatorChar + fileName;
+                // Add annotation to the document
+                DocumentType type = DocumentTypesConverter.GetDocumentType(documentType);
+                // Save result stream to file.
+
+                string path = GlobalConfiguration.Annotation.OutputDirectory + Path.DirectorySeparatorChar + fileName;
+                if (File.Exists(path))
+                {
+                    RemoveAnnotations(path);
+                }
+                // check if annotations array contains at least one annotation to add
+                if (annotations.Count != 0)
+                {
                     Stream cleanDoc = new FileStream(documentGuid, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
                     Stream result = AnnotationImageHandler.ExportAnnotationsToDocument(cleanDoc, annotations, type);
+                    cleanDoc.Dispose();
                     cleanDoc.Close();
                     // Save result stream to file.                       
                     using (FileStream fileStream = new FileStream(path, FileMode.Create))
@@ -469,16 +476,15 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                         fileStream.Write(buffer, 0, buffer.Length);
                         fileStream.Close();
                     }
-                    annotatedDocument = new AnnotatedDocumentEntity()
-                    {
-                        guid = path,
-                    };
-
                 }
                 else if (notSupportedException != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(notSupportedException));
                 }
+                annotatedDocument = new AnnotatedDocumentEntity()
+                {
+                    guid = path,
+                };
             }
             catch (Exception ex)
             {
@@ -494,15 +500,47 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
         /// <param name="documentGuid">string</param>
         /// <param name="documentType">string</param>
         /// <returns>AnnotationInfo[]</returns>
-        private AnnotationInfo[] GetAnnotations(string documentGuid, string documentType)
+        private AnnotationInfo[] GetAnnotations(string documentGuid, string documentType, string password)
+        {
+            try
+            {               
+                FileStream documentStream = new FileStream(documentGuid, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                DocumentType docType = DocumentTypesConverter.GetDocumentType(documentType);                
+                return new BaseImporter(documentStream, AnnotationImageHandler, password).ImportAnnotations(docType);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Remove all annotations from the document
+        /// </summary>
+        /// <param name="path">string</param>
+        private void RemoveAnnotations(string path)
         {
             try
             {
-                FileStream documentStream = new FileStream(documentGuid, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
-                DocumentType docType = DocumentTypesConverter.GetDocumentType(documentType);
-                return new BaseImporter(documentStream, AnnotationImageHandler).ImportAnnotations(docType);
+                Stream resultStream = null;
+                string tempFilePath = "";
+                using (Stream inputStream = File.Open(path, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                {
+                    resultStream = AnnotationImageHandler.RemoveAnnotationStream(inputStream);
+                    resultStream.Position = 0;
+                    tempFilePath = new Resources().GetFreeFileName(GlobalConfiguration.Annotation.OutputDirectory, Path.GetFileName(path));
+                    using (Stream tempFile = File.Create(tempFilePath))
+                    {
+                        resultStream.Seek(0, SeekOrigin.Begin);
+                        resultStream.CopyTo(tempFile);
+                    }
+                    resultStream.Dispose();
+                    resultStream.Close();
+                }
+                File.Delete(path);
+                File.Move(tempFilePath, path);
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 throw ex;
             }
