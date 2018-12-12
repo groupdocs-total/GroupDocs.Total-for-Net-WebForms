@@ -5,7 +5,6 @@ using GroupDocs.Annotation.Domain.Image;
 using GroupDocs.Annotation.Domain.Options;
 using GroupDocs.Annotation.Handler;
 using GroupDocs.Total.WebForms.Products.Annotation.Annotator;
-using GroupDocs.Total.WebForms.Products.Annotation.Entity.Request;
 using GroupDocs.Total.WebForms.Products.Annotation.Entity.Web;
 using GroupDocs.Total.WebForms.Products.Annotation.Importer;
 using GroupDocs.Total.WebForms.Products.Annotation.Util;
