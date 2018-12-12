@@ -335,7 +335,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex));
             }
         }
-        
+
         /// <summary>
         /// Annotate document
         /// </summary>      
@@ -376,8 +376,8 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                 {
                     documentType = "image";
                 }
-                // initiate annotator object               
-                Exception notSupportedException = null;
+                // initiate annotator object  
+                string notSupportedMessage = "";
                 for (int i = 0; i < annotationsData.Length; i++)
                 {
                     // create annotator
@@ -386,23 +386,25 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                     // add annotation, if current annotation type isn't supported by the current document type it will be ignored
                     try
                     {
-                        annotations.Add(AnnotatorFactory.createAnnotator(annotationData, pageData).GetAnnotationInfo(documentType));
+                        BaseAnnotator annotator = AnnotatorFactory.createAnnotator(annotationData, pageData);
+                        if (annotator.IsSupported(documentType))
+                        {
+                            annotations.Add(annotator.GetAnnotationInfo(documentType));
+                        }
+                        else
+                        {
+                            notSupportedMessage = annotator.Message;
+                        }
                     }
-                    catch (NotSupportedException ex)
+                    catch (System.Exception ex)
                     {
-                        notSupportedException = ex;
-                        continue;
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception(ex.Message, ex);
+                        throw new System.Exception(ex.Message, ex);
                     }
                 }
 
                 // Add annotation to the document
                 DocumentType type = DocumentTypesConverter.GetDocumentType(documentType);
                 // Save result stream to file.
-
                 string path = GlobalConfiguration.Annotation.OutputDirectory + Path.DirectorySeparatorChar + fileName;
                 if (File.Exists(path))
                 {
@@ -425,16 +427,16 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                         fileStream.Close();
                     }
                 }
-                else if (notSupportedException != null)
+                else
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(notSupportedException));
+                    return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(new NotSupportedException(notSupportedMessage)));
                 }
                 annotatedDocument = new AnnotatedDocumentEntity()
                 {
                     guid = path,
                 };
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 // set exception message
                 return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex));
@@ -451,9 +453,9 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
         private AnnotationInfo[] GetAnnotations(string documentGuid, string documentType, string password)
         {
             try
-            {               
+            {
                 FileStream documentStream = new FileStream(documentGuid, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                DocumentType docType = DocumentTypesConverter.GetDocumentType(documentType);                
+                DocumentType docType = DocumentTypesConverter.GetDocumentType(documentType);
                 return new BaseImporter(documentStream, AnnotationImageHandler, password).ImportAnnotations(docType);
             }
             catch (Exception ex)
@@ -462,11 +464,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
             }
         }
 
-        /// <summary>
-        /// Remove all annotations from the document
-        /// </summary>
-        /// <param name="path">string</param>
-        private void RemoveAnnotations(string path)
+        public void RemoveAnnotations(string path)
         {
             try
             {
