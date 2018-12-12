@@ -16,12 +16,8 @@ namespace GroupDocs.Total.WebForms.Test
             {
                 var request = new SerialisableRequest
                 {
-                    Method = "POST",
-                    RequestUri = "/viewer/loadFileTree",
-                    Headers = new Dictionary<string, string>{
-                        { "Content-Type","application/json" }
-                    },
-
+                    Method = "GET",
+                    RequestUri = "/viewer",  
                     Content = null
                 };
 
