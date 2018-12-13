@@ -5,6 +5,7 @@ using GroupDocs.Annotation.Domain.Image;
 using GroupDocs.Annotation.Domain.Options;
 using GroupDocs.Annotation.Handler;
 using GroupDocs.Total.WebForms.Products.Annotation.Annotator;
+using GroupDocs.Total.WebForms.Products.Annotation.Entity.Request;
 using GroupDocs.Total.WebForms.Products.Annotation.Entity.Web;
 using GroupDocs.Total.WebForms.Products.Annotation.Importer;
 using GroupDocs.Total.WebForms.Products.Annotation.Util;
@@ -31,7 +32,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
     {
         private static Common.Config.GlobalConfiguration GlobalConfiguration;
         private List<string> SupportedImageFormats = new List<string>() { ".bmp", ".jpeg", ".jpg", ".tiff", ".tif", ".png", ".gif", ".emf", ".wmf", ".dwg", ".dicom", ".djvu" };
-        private List<string> SupportedAutoCadFormats = new List<string>() { ".dxf", ".dwg" };
+        private List<string> SupportedDiagrammFormats = new List<string>() { ".vsd", ".vdx", ".vss", ".vsx", ".vst", ".vtx", ".vsdx", ".vdw", ".vstx", ".vssx" };
         private static AnnotationImageHandler AnnotationImageHandler;
         private DirectoryUtils DirectoryUtils;
 
@@ -148,7 +149,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                 {
                     documentType = "image";
                 }
-                else if (SupportedAutoCadFormats.Contains(fileExtension))
+                else if (SupportedDiagrammFormats.Contains(fileExtension))
                 {
                     documentType = "diagram";
                 }
@@ -167,6 +168,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                     description.height = pageData.Height;
                     description.width = pageData.Width;
                     description.number = pageData.Number;
+                    description.supportedAnnotations = new SupportedAnnotations().GetSupportedAnnotations(documentType);
                     // set annotations data if document page contains annotations
                     if (annotations != null && annotations.Length > 0)
                     {
@@ -334,7 +336,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex));
             }
         }
-
+       
         /// <summary>
         /// Annotate document
         /// </summary>      
@@ -483,7 +485,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                     resultStream.Close();
                 }
                 File.Delete(path);
-                File.Move(tempFilePath, path);
+                File.Move(tempFilePath, path);                
             }
             catch (System.Exception ex)
             {
