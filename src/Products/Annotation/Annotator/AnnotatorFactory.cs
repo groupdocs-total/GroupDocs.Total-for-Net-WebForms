@@ -44,7 +44,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
                 case "distance":
                     return new DistanceAnnotator(annotationData, pageData);
                 default:
-                    throw new System.Exception("Wrong annotation data without annotation type!");
+                    throw new Exception("Wrong annotation data without annotation type!");
             }
         }
     }
