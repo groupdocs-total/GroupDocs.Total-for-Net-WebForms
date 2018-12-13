@@ -11,3 +11,6 @@ src/Resources/*
 node_modules
 src/package-lock.json
 /src/node  
+/GroupDocs.Total.WebForms.Test/GroupDocs.Total.WebForms.Test.csproj.user
+/GroupDocs.Total.WebForms.Test/bin
+/GroupDocs.Total.WebForms.Test/obj
