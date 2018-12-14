@@ -1,4 +1,6 @@
-﻿using GroupDocs.Annotation.Domain;
+﻿
+using GroupDocs.Annotation.Domain;
+using GroupDocs.Annotation.Domain.Containers;
 using GroupDocs.Total.WebForms.Products.Annotation.Entity.Web;
 using System;
 
@@ -9,8 +11,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
     /// </summary>
     public abstract class BaseAnnotator
     {
-        public static string MESSAGE = "Annotation of type %s for this file type is not supported";
-
+        public string Message = "Annotation of type {0} for this file type is not supported";       
         protected AnnotationDataEntity annotationData;
         protected PageData pageData;
 
@@ -139,6 +140,25 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
                     return AnnotateDiagram();
                 default:
                     throw new System.Exception("Wrong annotation data without document type!");
+            }
+        }
+
+        /// <summary>
+        /// Check if the current annotatin is supported
+        /// </summary>
+        /// <param name="documentType">string</param>
+        /// <returns></returns>
+        internal bool IsSupported(string documentType)
+        {
+            try
+            {
+                AnnotatorFactory.createAnnotator(annotationData, pageData).GetAnnotationInfo(documentType);
+                return true;
+            }
+            catch (NotSupportedException)
+            {
+                Message = String.Format(Message, annotationData.type);
+                return false;
             }
         }
     }

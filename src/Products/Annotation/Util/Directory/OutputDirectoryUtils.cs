@@ -1,6 +1,5 @@
 ﻿using GroupDocs.Total.WebForms.Products.Annotation.Config;
 using GroupDocs.Total.WebForms.Products.Common.Util.Directory;
-using GroupDocs.Total.WebForms.Products.Signature.Config;
 using System;
 
 namespace GroupDocs.Total.WebForms.Products.Annotation.Util.Directory

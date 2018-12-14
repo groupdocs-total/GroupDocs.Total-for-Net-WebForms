@@ -1,4 +1,5 @@
 ﻿using GroupDocs.Annotation.Domain;
+using GroupDocs.Annotation.Domain.Containers;
 using GroupDocs.Total.WebForms.Products.Annotation.Entity.Web;
 using System;
 
@@ -31,7 +32,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
         
         public override AnnotationInfo AnnotateCells()
         {
-            throw new NotSupportedException(String.Format(MESSAGE, annotationData.type));
+            throw new NotSupportedException(String.Format(Message, annotationData.type));
         }
         
         public override AnnotationInfo AnnotateSlides()
@@ -45,12 +46,15 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
 
         public override AnnotationInfo AnnotateImage()
         {
-            throw new NotSupportedException(String.Format(MESSAGE, annotationData.type));
+            SetFixTop(false);
+            // init possible types of annotations
+            AnnotationInfo strikeoutAnnotation = InitAnnotationInfo();
+            return strikeoutAnnotation;
         }
 
         public override AnnotationInfo AnnotateDiagram()
         {
-            throw new NotSupportedException(String.Format(MESSAGE, annotationData.type));
+            throw new NotSupportedException(String.Format(Message, annotationData.type));
         }
 
         protected override AnnotationType GetType()

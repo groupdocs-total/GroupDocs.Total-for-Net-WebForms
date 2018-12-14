@@ -14,7 +14,12 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
         
         public override AnnotationInfo AnnotateWord()
         {
-            throw new NotSupportedException(String.Format(MESSAGE, annotationData.type));
+            // initiate AnnotationInfo object
+            AnnotationInfo areaAnnotation = InitAnnotationInfo();
+            // set annotation X, Y position
+            areaAnnotation.AnnotationPosition = new Point(annotationData.left, annotationData.top);
+            // add replies
+            return areaAnnotation;
         }
 
         public override AnnotationInfo AnnotatePdf()
@@ -29,7 +34,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
 
         public override AnnotationInfo AnnotateCells()
         {
-            throw new NotSupportedException(String.Format(MESSAGE, annotationData.type));
+            throw new NotSupportedException(String.Format(Message, annotationData.type));
         }
 
         public override AnnotationInfo AnnotateSlides()

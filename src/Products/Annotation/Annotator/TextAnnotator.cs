@@ -1,4 +1,5 @@
 ﻿using GroupDocs.Annotation.Domain;
+using GroupDocs.Annotation.Domain.Containers;
 using GroupDocs.Total.WebForms.Products.Annotation.Entity.Web;
 using System;
 
@@ -52,17 +53,19 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
         
         public override AnnotationInfo AnnotateImage()
         {
-            throw new NotSupportedException(String.Format(MESSAGE, annotationData.type));
+            // init possible types of annotations
+            AnnotationInfo textAnnotation = InitAnnotationInfo();
+            return textAnnotation;
         }
         
         public override AnnotationInfo AnnotateDiagram()
         {
-            throw new NotSupportedException(String.Format(MESSAGE, annotationData.type));
+            throw new NotSupportedException(String.Format(Message, annotationData.type));
         }
         
         protected Rectangle getBox()
         {
-            return new Rectangle(annotationData.left / 4, annotationData.top, annotationData.width, annotationData.height);
+            return new Rectangle(annotationData.left / 4, pageData.Height - annotationData.top, annotationData.width, annotationData.height);
         }
         
         protected override AnnotationType GetType()
