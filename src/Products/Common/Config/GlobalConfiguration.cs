@@ -1,7 +1,7 @@
 ﻿using GroupDocs.Total.WebForms.Products.Annotation.Config;
-using GroupDocs.Total.WebForms.Products.Comparison.Config;
 using GroupDocs.Total.WebForms.Products.Signature.Config;
 using GroupDocs.Total.WebForms.Products.Viewer.Config;
+using GroupDocs.Total.WebForms.Products.Comparison.Config;
 
 namespace GroupDocs.Total.WebForms.Products.Common.Config
 {
@@ -12,9 +12,9 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
     {
         public ServerConfiguration Server;
         public ApplicationConfiguration Application;
+        public CommonConfiguration Common;
         public SignatureConfiguration Signature;
         public ViewerConfiguration Viewer;
-        public CommonConfiguration Common;
         public AnnotationConfiguration Annotation;
         public ComparisonConfiguration Comparison;
 
@@ -22,7 +22,7 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
         /// Get all configurations
         /// </summary>
         public GlobalConfiguration()
-        {
+        {            
             Server = new ServerConfiguration();
             Application = new ApplicationConfiguration();
             Signature = new SignatureConfiguration();

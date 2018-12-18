@@ -1,7 +1,6 @@
 ﻿using GroupDocs.Total.WebForms.Products.Common.Util.Directory;
 using GroupDocs.Total.WebForms.Products.Signature.Config;
 
-
 namespace GroupDocs.Total.WebForms.Products.Signature.Util.Directory
 {
     /// <summary>

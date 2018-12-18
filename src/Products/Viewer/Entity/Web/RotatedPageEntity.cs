@@ -7,6 +7,6 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Entity.Web
     public class RotatedPageEntity
     {
         public int pageNumber;
-        public string angle;
+        public string angle;        
     }
 }
