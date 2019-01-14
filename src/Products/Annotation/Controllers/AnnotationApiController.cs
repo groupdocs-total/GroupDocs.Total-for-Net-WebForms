@@ -123,11 +123,12 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
         [Route("annotation/loadDocumentDescription")]
         public HttpResponseMessage LoadDocumentDescription(AnnotationPostedDataEntity loadDocumentRequest)
         {
+            string password = "";
             try
             {
                 // get/set parameters
                 string documentGuid = loadDocumentRequest.guid;
-                string password = loadDocumentRequest.password;
+                password = loadDocumentRequest.password;
                 DocumentInfoContainer documentDescription;
                 // get document info container              
                 string fileName = System.IO.Path.GetFileName(documentGuid);
@@ -214,7 +215,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
             catch (System.Exception ex)
             {
                 // set exception message
-                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex));
+                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex, password));
             }
         }
 
@@ -227,12 +228,13 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
         [Route("annotation/loadDocumentPage")]
         public HttpResponseMessage LoadDocumentPage(AnnotationPostedDataEntity loadDocumentPageRequest)
         {
+            string password = "";
             try
             {
                 // get/set parameters
                 string documentGuid = loadDocumentPageRequest.guid;
                 int pageNumber = loadDocumentPageRequest.page;
-                string password = loadDocumentPageRequest.password;
+                password = loadDocumentPageRequest.password;
                 LoadedPageEntity loadedPage = new LoadedPageEntity();
                 ImageOptions imageOptions = new ImageOptions()
                 {
@@ -265,7 +267,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
             }
             catch (System.Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex));
+                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex, password));
             }
         }
 

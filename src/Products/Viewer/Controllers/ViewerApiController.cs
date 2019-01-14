@@ -30,8 +30,6 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
         private static Common.Config.GlobalConfiguration globalConfiguration;
         private static ViewerHtmlHandler viewerHtmlHandler = null;
         private static ViewerImageHandler viewerImageHandler = null;
-        public static readonly string PASSWORD_REQUIRED = "Password Required";
-        public static readonly string INCORRECT_PASSWORD = "Incorrect password";
 
         /// <summary>
         /// Constructor
@@ -163,24 +161,10 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
                 // return document description
                 return Request.CreateResponse(HttpStatusCode.OK, loadDocumentEntity);
             }
-            catch (InvalidPasswordException ex)
-            {
-                if (String.IsNullOrEmpty(password))
-                {
-                    Exception error = new Exception(PASSWORD_REQUIRED);
-                    return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(error, password));
-                }
-                else
-                {
-                    Exception error = new Exception(INCORRECT_PASSWORD);
-                    return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(error, password));
-                }
-            }
             catch (System.Exception ex)
             {
-
                 // set exception message
-                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex));
+                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex, password));
             }
         }
 

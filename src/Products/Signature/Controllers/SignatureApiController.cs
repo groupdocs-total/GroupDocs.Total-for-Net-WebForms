@@ -177,7 +177,7 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex));
+                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex, password));
             }
         }
 
@@ -190,12 +190,13 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Controllers
         [Route("signature/loadDocumentPage")]
         public HttpResponseMessage LoadDocumentPage(SignaturePostedDataEntity postedData)
         {
+            string password = "";
             try
             {
                 // get/set parameters
                 string documentGuid = postedData.guid;
                 int pageNumber = postedData.page;
-                string password = postedData.password;
+                password = postedData.password;
                 LoadedPageEntity loadedPage = new LoadedPageEntity();
                 // get page image
                 byte[] bytes = SignatureHandler.GetPageImage(documentGuid, pageNumber, password, null, 100);
@@ -207,7 +208,7 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex));
+                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex, password));
             }
         }
 
