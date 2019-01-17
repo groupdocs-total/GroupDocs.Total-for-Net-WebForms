@@ -31,7 +31,7 @@
             upload: <%=config.Common.isUpload.ToString().ToLowerInvariant()%>,
             print: <%=config.Common.isPrint.ToString().ToLowerInvariant()%>,
             rewrite: <%=config.Common.isRewrite.ToString().ToLowerInvariant()%>,
-            preloadResultPageCount: 2,
+            preloadResultPageCount: <%=config.Common.isRewrite.ToString().ToLowerInvariant()%>,
             multiComparing: <%=config.Comparison.GetIsMultiComparing().ToString().ToLowerInvariant()%>,
         });
     </script>
