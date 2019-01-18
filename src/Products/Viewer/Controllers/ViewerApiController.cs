@@ -61,8 +61,6 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
                 // initialize total instance for the Image mode
                 viewerImageHandler = new ViewerImageHandler(config);
             }
-            GroupDocs.Viewer.License license = new GroupDocs.Viewer.License();
-            license.SetLicense(globalConfiguration.Application.LicensePath);
         }
 
         /// <summary>

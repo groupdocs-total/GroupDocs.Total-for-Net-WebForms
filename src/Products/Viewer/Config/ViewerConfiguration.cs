@@ -22,7 +22,8 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Config
         private bool isThumbnails = true;
         private bool isRotate = true;
         private bool isHtmlMode = true;
-        private bool Cache = true;       
+        private bool Cache = true;
+        private bool SaveRotateState = true;
 
         /// <summary>
         /// Constructor
@@ -39,7 +40,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Config
             {
                 FilesDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, FilesDirectory);
                 if (!Directory.Exists(FilesDirectory))
-                {                   
+                {
                     Directory.CreateDirectory(FilesDirectory);
                 }
             }
@@ -52,6 +53,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Config
             isRotate = valuesGetter.GetBooleanPropertyValue("rotate", isRotate);
             isHtmlMode = valuesGetter.GetBooleanPropertyValue("htmlMode", isHtmlMode);
             Cache = valuesGetter.GetBooleanPropertyValue("cache", Cache);
+            SaveRotateState = valuesGetter.GetBooleanPropertyValue("saveRotateState", SaveRotateState);
         }
 
         private static bool IsFullPath(string path)
@@ -60,7 +62,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Config
                 && path.IndexOfAny(System.IO.Path.GetInvalidPathChars().ToArray()) == -1
                 && Path.IsPathRooted(path)
                 && !Path.GetPathRoot(path).Equals(Path.DirectorySeparatorChar.ToString(), StringComparison.Ordinal);
-        }        
+        }
 
         public void SetFilesDirectory(string filesDirectory)
         {
@@ -160,6 +162,16 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Config
         public bool GetCache()
         {
             return Cache;
+        }
+
+        public void SetSaveRotateState(bool saveRotateState)
+        {
+            this.SaveRotateState = saveRotateState;
+        }
+
+        public bool GetSaveRotateState()
+        {
+            return SaveRotateState;
         }
     }
 }
