@@ -61,8 +61,6 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
                 // initialize total instance for the Image mode
                 viewerImageHandler = new ViewerImageHandler(config);
             }
-            GroupDocs.Viewer.License license = new GroupDocs.Viewer.License();
-            license.SetLicense(globalConfiguration.Application.LicensePath);
         }
 
         /// <summary>
@@ -392,7 +390,14 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
         {
             PageDescriptionEntity pageDescriptionEntity = new PageDescriptionEntity();
             pageDescriptionEntity.number = page.Number;
-            pageDescriptionEntity.angle = page.Angle;
+            if (globalConfiguration.Viewer.GetSaveRotateState())
+            {
+                pageDescriptionEntity.angle = page.Angle;
+            }
+            else
+            {
+                pageDescriptionEntity.angle = 0;
+            }
             pageDescriptionEntity.height = page.Height;
             pageDescriptionEntity.width = page.Width;
             return pageDescriptionEntity;
