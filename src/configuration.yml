@@ -160,7 +160,6 @@ annotation:
   textUnderlineAnnotation: true
   # Enable/disable Distance annotation
   distanceAnnotation: true
-  # Enable/disable original document downloading
 
 ################################################
 # GroupDocs.Comparison configurations
