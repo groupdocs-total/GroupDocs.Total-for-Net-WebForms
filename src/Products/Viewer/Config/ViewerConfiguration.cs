@@ -40,7 +40,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Config
             {
                 FilesDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, FilesDirectory);
                 if (!Directory.Exists(FilesDirectory))
-                {
+                {                   
                     Directory.CreateDirectory(FilesDirectory);
                 }
             }
@@ -62,7 +62,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Config
                 && path.IndexOfAny(System.IO.Path.GetInvalidPathChars().ToArray()) == -1
                 && Path.IsPathRooted(path)
                 && !Path.GetPathRoot(path).Equals(Path.DirectorySeparatorChar.ToString(), StringComparison.Ordinal);
-        }
+        }        
 
         public void SetFilesDirectory(string filesDirectory)
         {

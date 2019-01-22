@@ -1,5 +1,5 @@
 # GroupDocs.Total for .NET Web.Forms Example
-###### version 0.4.17
+###### version 0.4.18
 
 [![Build status](https://ci.appveyor.com/api/projects/status/boo4pnp61r6b8kqp/branch/master?svg=true)](https://ci.appveyor.com/project/egorovpavel/groupdocs-total-for-net-webforms/branch/master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/dbaad4274f364d91929418a721ae2a45)](https://www.codacy.com/app/GroupDocs/GroupDocs.Total-for-NET-WebForms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=groupdocs-total/GroupDocs.Total-for-NET-WebForms&amp;utm_campaign=Badge_Grade)
