@@ -1,10 +1,8 @@
 ﻿using GroupDocs.Total.WebForms.Products.Common.Config;
 using GroupDocs.Total.WebForms.Products.Common.Util.Parser;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace GroupDocs.Total.WebForms.Products.Viewer.Config
 {
@@ -16,6 +14,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Config
         private string FilesDirectory = "DocumentSamples/Viewer";
         private string FontsDirectory = "";
         private string DefaultDocument = "";
+        private string WatermarkText = "";
         private int PreloadPageCount = 0;
         private bool isZoom = true;
         private bool isSearch = true;
@@ -54,6 +53,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Config
             isHtmlMode = valuesGetter.GetBooleanPropertyValue("htmlMode", isHtmlMode);
             Cache = valuesGetter.GetBooleanPropertyValue("cache", Cache);
             SaveRotateState = valuesGetter.GetBooleanPropertyValue("saveRotateState", SaveRotateState);
+            WatermarkText = valuesGetter.GetStringPropertyValue("watermarkText", WatermarkText);
         }
 
         private static bool IsFullPath(string path)
@@ -172,6 +172,16 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Config
         public bool GetSaveRotateState()
         {
             return SaveRotateState;
+        }
+
+        public void SetWatermarkText(string watermarkText)
+        {
+            this.WatermarkText = watermarkText;
+        }
+
+        public string GetWatermarkText()
+        {
+            return WatermarkText;
         }
     }
 }
