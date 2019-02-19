@@ -5,9 +5,7 @@ using GroupDocs.Viewer.Config;
 using GroupDocs.Viewer.Converter.Options;
 using GroupDocs.Viewer.Domain;
 using GroupDocs.Viewer.Domain.Containers;
-using GroupDocs.Viewer.Domain.Image;
 using GroupDocs.Viewer.Domain.Options;
-using GroupDocs.Viewer.Exception;
 using GroupDocs.Viewer.Handler;
 using System;
 using System.Collections.Generic;
@@ -39,8 +37,6 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
         {
             // Check if filesDirectory is relative or absolute path           
             globalConfiguration = new Common.Config.GlobalConfiguration();
-            GroupDocs.Viewer.License license = new GroupDocs.Viewer.License();
-            license.SetLicense(globalConfiguration.Application.LicensePath);
             // create viewer application configuration
             ViewerConfig config = new ViewerConfig();
             config.StoragePath = globalConfiguration.Viewer.GetFilesDirectory();
@@ -54,12 +50,12 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
             config.FontDirectories = fontsDirectory;
             if (globalConfiguration.Viewer.GetIsHtmlMode())
             {
-                // initialize total instance for the HTML mode
+                // initialize Viewer instance for the HTML mode
                 viewerHtmlHandler = new ViewerHtmlHandler(config);
             }
             else
             {
-                // initialize total instance for the Image mode
+                // initialize Viewer instance for the Image mode
                 viewerImageHandler = new ViewerImageHandler(config);
             }
         }
@@ -161,11 +157,11 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
                 // get/set parameters
                 string documentGuid = postedData.guid;
                 int pageNumber = postedData.page;
-                password = postedData.password;
+                password = (String.IsNullOrEmpty(postedData.password)) ? null : postedData.password;
                 // get document info options
                 DocumentInfoContainer documentInfoContainer = new DocumentInfoContainer();
                 // get document info options
-                DocumentInfoOptions documentInfoOptions = new DocumentInfoOptions(documentGuid);
+                DocumentInfoOptions documentInfoOptions = new DocumentInfoOptions();
                 // set password for protected document                
                 documentInfoOptions.Password = password;
                 // get document info container               
@@ -341,7 +337,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
         {
             // get/set parameters
             string documentGuid = postedData.guid;
-            string password = postedData.password;
+            string password = (String.IsNullOrEmpty(postedData.password)) ? null : postedData.password;
             // check if documentGuid contains path or only file name
             if (!Path.IsPathRooted(documentGuid))
             {
@@ -349,7 +345,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
             }
             DocumentInfoContainer documentInfoContainer;
             // get document info options
-            DocumentInfoOptions documentInfoOptions = new DocumentInfoOptions(documentGuid);
+            DocumentInfoOptions documentInfoOptions = new DocumentInfoOptions();
             // set password for protected document                
             documentInfoOptions.Password = password;
             // get document info container               
