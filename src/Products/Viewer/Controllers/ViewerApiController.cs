@@ -36,7 +36,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
         public ViewerApiController()
         {
             // Check if filesDirectory is relative or absolute path           
-            globalConfiguration = new Common.Config.GlobalConfiguration();
+            globalConfiguration = new Common.Config.GlobalConfiguration();           
             // create viewer application configuration
             ViewerConfig config = new ViewerConfig();
             config.StoragePath = globalConfiguration.Viewer.GetFilesDirectory();

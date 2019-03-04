@@ -44,8 +44,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GroupDocs.Annotation, Version=18.12.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\GroupDocs.Annotation.18.12.0\lib\GroupDocs.Annotation.dll</HintPath>
+    <Reference Include="GroupDocs.Annotation, Version=19.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\GroupDocs.Annotation.19.1.0\lib\GroupDocs.Annotation.dll</HintPath>
     </Reference>
     <Reference Include="GroupDocs.Comparison, Version=19.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\GroupDocs.Comparison.19.1.0\lib\GroupDocs.Comparison.dll</HintPath>
@@ -338,6 +338,7 @@
     <Compile Include="Products\Common\Entity\Web\PostedDataEntity.cs" />
     <Compile Include="Products\Common\Entity\Web\UploadedDocumentEntity.cs" />
     <Compile Include="Products\Common\Resources\Resources.cs" />
+    <Compile Include="Products\Common\Util\Comparator\FileDateComparator.cs" />
     <Compile Include="Products\Common\Util\Parser\YamlParser.cs" />
     <Compile Include="Products\Comparison\Config\ComparisonConfiguration.cs" />
     <Compile Include="Products\Comparison\Controllers\ComparisonApiController.cs" />
@@ -356,8 +357,11 @@
     <Compile Include="Products\Signature\Entity\Directory\QrCodeDataDirectoryEntity.cs" />
     <Compile Include="Products\Signature\Entity\Directory\StampDataDirectoryEntity.cs" />
     <Compile Include="Products\Signature\Entity\Directory\TextDataDirectoryEntity.cs" />
+    <Compile Include="Products\Signature\Entity\Directory\UploadedImageDataDirectoryEntity.cs" />
+    <Compile Include="Products\Signature\Entity\Web\DeleteSignatureFileRequest.cs" />
     <Compile Include="Products\Signature\Entity\Web\SignatureDataEntity.cs" />
     <Compile Include="Products\Signature\Entity\Web\SignatureFileDescriptionEntity.cs" />
+    <Compile Include="Products\Signature\Entity\Web\SignatureLoadedPageEntity.cs" />
     <Compile Include="Products\Signature\Entity\Web\SignaturePostedDataEntity.cs" />
     <Compile Include="Products\Signature\Entity\Web\SignedDocumentEntity.cs" />
     <Compile Include="Products\Signature\Entity\Xml\OpticalXmlEntity.cs" />
@@ -378,7 +382,7 @@
     <Compile Include="Products\Signature\Util\Directory\DirectoryUtils.cs" />
     <Compile Include="Products\Signature\Util\Directory\FilesDirectoryUtils.cs" />
     <Compile Include="Products\Common\Util\Directory\IDirectoryUtils.cs" />
-    <Compile Include="Products\Signature\Util\Directory\OutputDirectoryUtils.cs" />
+    <Compile Include="Products\Signature\Util\Directory\TempDirectoryUtils.cs" />
     <Compile Include="Products\Viewer\Config\ViewerConfiguration.cs" />
     <Compile Include="Products\Viewer\Controllers\ViewerApiController.cs" />
     <Compile Include="Products\Viewer\Entity\Web\RotatedPageEntity.cs" />
