@@ -352,7 +352,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
         }
 
         [HttpPost]
-        [Route("printPdf")]
+        [Route("viewer/printPdf")]
         public HttpResponseMessage PrintPdf(PostedDataEntity loadDocumentRequest)
         {
             // get document path
