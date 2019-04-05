@@ -143,6 +143,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Comparison.aspx" />
+    <Content Include="Mono.Security.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mono.Security.Win32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mono.WebServer2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\annotation\css\annotation.css" />
     <Content Include="Resources\annotation\css\annotation.mobile.css" />
     <Content Include="Resources\annotation\images\area.png" />
@@ -273,6 +282,9 @@
     <Content Include="Resources\comparison\webfonts\fa-solid-900.ttf" />
     <Content Include="Resources\comparison\webfonts\fa-solid-900.woff" />
     <Content Include="Resources\comparison\webfonts\fa-solid-900.woff2" />
+    <Content Include="xsp4.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -458,5 +470,24 @@
     <Exec Command="..\packages\Node-Kit.11.1.0.1\node\win\node.exe .\node_modules\gulp\bin\gulp.js build" Condition=" '$(OS)' == 'Windows_NT' " />
   </Target>
   <Target Name="AfterBuild">
+    <ItemGroup>
+      <ZipFiles Include="$(OutDir)**\*.*" />
+      <ZipFiles Include="$(ProjectDir)Resources\**\*.*" />
+      <ZipFiles Include="$(ProjectDir)Views\**\*.*" />
+      <ZipFiles Include="$(ProjectDir)Global.asax" />
+      <ZipFiles Include="$(ProjectDir)Global.asax.cs" />
+      <ZipFiles Include="$(ProjectDir)Web.config" />
+      <ZipFiles Include="$(ProjectDir)configuration.yml" />
+      <ZipFiles Include="$(ProjectDir)*.aspx" />
+      <ZipFiles Include="$(ProjectDir)*.aspx.cs" />
+	  <ZipFiles Include="$(ProjectDir)Startup.cs" />
+      <ZipFiles Include="$(ProjectDir)LaunchServer.bat" />
+      <ZipFiles Include="$(ProjectDir)xsp4.exe" />
+      <ZipFiles Include="$(ProjectDir)Mono.Security.dll" />
+      <ZipFiles Include="$(ProjectDir)Mono.Security.Win32.dll" />
+      <ZipFiles Include="$(ProjectDir)Mono.WebServer2.dll" />
+    </ItemGroup>
+    <Zip Files="@(ZipFiles)" WorkingDirectory="$(ProjectDir)" ZipFileName="GroupDocs.Total.Web.Forms.zip" />
   </Target>
+  <Import Project="..\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
 </Project>
