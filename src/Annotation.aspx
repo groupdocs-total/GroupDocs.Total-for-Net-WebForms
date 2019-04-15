@@ -7,7 +7,7 @@
 <html>
 <head>
     <title>Annotation for .NET Web Forms</title>
-    <link type="text/css" rel="stylesheet" href="/resources/common/css/all.min.css">
+     <link type="text/css" rel="stylesheet" href="/resources/common/css/all.min.css">
     <link type="text/css" rel="stylesheet" href="/resources/common/css/v4-shims.min.css">
     <link type="text/css" rel="stylesheet" href="/resources/common/css/swiper.min.css">
     <link type="text/css" rel="stylesheet" href="/resources/common/css/jquery-ui.min.css" />
@@ -15,17 +15,21 @@
     <link type="text/css" rel="stylesheet" href="/resources/viewer/css/viewer.css" />
     <link type="text/css" rel="stylesheet" href="/resources/viewer/css/viewer.mobile.css" />
     <link type="text/css" rel="stylesheet" href="/resources/viewer/css/viewer-dark.css" />
+    <link type="text/css" rel="stylesheet" href="/resources/annotation/css/bcPicker.css" />
+    <link type="text/css" rel="stylesheet" href="/resources/annotation/css/bcPicker.mobile.css" />
     <link type="text/css" rel="stylesheet" href="/resources/annotation/css/annotation.css" />
+    <link type="text/css" rel="stylesheet" href="/resources/annotation/css/annotation.mobile.css" />
     <script type="text/javascript" src="/resources/common/js/jquery.min.js"></script>
     <script type="text/javascript" src="/resources/common/js/swiper.min.js"></script>
     <script type="text/javascript" src="/resources/common/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/resources/common/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="/resources/common/js/jquery.initialize.min.js"></script>
-    <script type="text/javascript" src="/resources/common/js/es6-promise.auto.js"></script>
     <script type="text/javascript" src="/resources/common/js/jquery.timeago.js"></script>
+    <script type="text/javascript" src="/resources/common/js/es6-promise.auto.js"></script>
     <script type="text/javascript" src="/resources/viewer/js/viewer.js"></script>
     <script type="text/javascript" src="/resources/annotation/js/svg.min.js"></script>
     <script type="text/javascript" src="/resources/annotation/js/svg.draw.js"></script>
+    <script type="text/javascript" src="/resources/annotation/js/bcPicker.js"></script>
     <script type="text/javascript" src="/resources/annotation/js/drawSvgAnnotation.js"></script>
     <script type="text/javascript" src="/resources/annotation/js/drawTextAnnotation.js"></script>
     <script type="text/javascript" src="/resources/annotation/js/annotation.js"></script>
