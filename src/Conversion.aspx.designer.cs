@@ -10,6 +10,6 @@
 namespace GroupDocs.Total.WebForms {
     
     
-    public partial class Viewer {
+    public partial class Conversion {
     }
 }
