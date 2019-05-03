@@ -18,7 +18,7 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
         public ViewerConfiguration Viewer;
         public AnnotationConfiguration Annotation;
         public ComparisonConfiguration Comparison;
-        public ConversionConfiguration Conversion;
+        private ConversionConfiguration Conversion;
 
         /// <summary>
         /// Get all configurations
@@ -33,6 +33,11 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
             Annotation = new AnnotationConfiguration();
             Comparison = new ComparisonConfiguration();
             Conversion = new ConversionConfiguration();
+        }
+
+        public ConversionConfiguration GetConversionConfiguration()
+        {
+            return Conversion;
         }
     }
 }
