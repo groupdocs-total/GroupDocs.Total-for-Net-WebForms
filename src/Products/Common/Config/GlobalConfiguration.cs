@@ -18,7 +18,7 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
         public ViewerConfiguration Viewer;
         public AnnotationConfiguration Annotation;
         public ComparisonConfiguration Comparison;
-        private ConversionConfiguration Conversion;
+        private readonly ConversionConfiguration Conversion;
 
         /// <summary>
         /// Get all configurations
