@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnnotationTest.cs" />
+    <Compile Include="ConversionTest.cs" />
     <Compile Include="SignatureTest.cs" />
     <Compile Include="ComparisonTest.cs" />
     <Compile Include="TotalTest.cs" />
