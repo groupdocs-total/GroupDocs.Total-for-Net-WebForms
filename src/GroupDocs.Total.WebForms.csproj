@@ -357,6 +357,7 @@
     <Compile Include="Products\Conversion\Controllers\ConversionApiController.cs" />
     <Compile Include="Products\Conversion\Entity\Web\Request\ConversionPostedData.cs" />
     <Compile Include="Products\Conversion\Entity\Web\Response\ConversionTypesEntity.cs" />
+    <Compile Include="Products\Conversion\Filter\DestinationTypesFilter.cs" />
     <Compile Include="Products\Conversion\Manager\ConversionManager.cs" />
     <Compile Include="Products\Signature\Config\SignatureConfiguration.cs" />
     <Compile Include="Products\Signature\Controllers\SignatureApiController.cs" />

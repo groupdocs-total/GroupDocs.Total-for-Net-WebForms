@@ -10,6 +10,7 @@
     <title>Conversion for .NET MVC</title>
     <link type="text/css" rel="stylesheet" href="/resources/common/css/all.min.css">
     <link type="text/css" rel="stylesheet" href="/resources/common/css/v4-shims.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/conversion/css/tooltipster.bundle.min.css" />
     <link type="text/css" rel="stylesheet" href="/resources/common/css/swiper.min.css">
     <link type="text/css" rel="stylesheet" href="/resources/common/css/circle-progress.css" />
     <link type="text/css" rel="stylesheet" href="/resources/viewer/css/viewer.css" />
@@ -18,6 +19,7 @@
 	<link type="text/css" rel="stylesheet" href="/resources/conversion/css/conversion.css" />
     <link type="text/css" rel="stylesheet" href="/resources/conversion/css/conversion.mobile.css" />
     <script type="text/javascript" src="/resources/common/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/resources/conversion/js/tooltipster.bundle.min.js"></script>
     <script type="text/javascript" src="/resources/common/js/es6-promise.auto.js"></script>
     <script type="text/javascript" src="/resources/common/js/swiper.min.js"></script>
     <script type="text/javascript" src="/resources/viewer/js/viewer.js"></script>

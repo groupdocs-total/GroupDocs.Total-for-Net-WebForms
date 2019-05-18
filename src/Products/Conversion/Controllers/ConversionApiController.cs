@@ -5,6 +5,7 @@ using GroupDocs.Total.WebForms.Products.Common.Resources;
 using GroupDocs.Total.WebForms.Products.Common.Util.Comparator;
 using GroupDocs.Total.WebForms.Products.Conversion.Entity.Web.Request;
 using GroupDocs.Total.WebForms.Products.Conversion.Entity.Web.Response;
+using GroupDocs.Total.WebForms.Products.Conversion.Filter;
 using GroupDocs.Total.WebForms.Products.Conversion.Manager;
 using System;
 using System.Collections.Generic;
@@ -26,8 +27,7 @@ namespace GroupDocs.Total.WebForms.Products.Conversion.Controllers
     public class ConversionApiController : ApiController
     {
 
-        private readonly Common.Config.GlobalConfiguration GlobalConfiguration;
-        private readonly ConversionHandler ConversionHandler;
+        private readonly Common.Config.GlobalConfiguration GlobalConfiguration;       
         private readonly ConversionManager Manager;
         private readonly List<string> SupportedImageFormats = new List<string> { ".jp2", ".ico", ".psd", ".svg", ".bmp", ".jpeg", ".jpg", ".tiff", ".tif", ".png", ".gif", ".emf", ".wmf", ".dwg", ".dicom", ".dxf", ".jpe", ".jfif" };
 
@@ -44,7 +44,8 @@ namespace GroupDocs.Total.WebForms.Products.Conversion.Controllers
                 StoragePath = GlobalConfiguration.GetConversionConfiguration().GetFilesDirectory(),
                 OutputPath = GlobalConfiguration.GetConversionConfiguration().GetResultDirectory()
             };
-            ConversionHandler = new ConversionHandler(conversionConfig);
+
+            ConversionHandler ConversionHandler = new ConversionHandler(conversionConfig);
             Manager = new ConversionManager(ConversionHandler);
         }
 
@@ -107,7 +108,7 @@ namespace GroupDocs.Total.WebForms.Products.Conversion.Controllers
                         string documentExtension = Path.GetExtension(fileDescription.name).TrimStart('.');
                         if (!String.IsNullOrEmpty(documentExtension))
                         {
-                            string[] availableConversions = ConversionHandler.GetPossibleConversions(documentExtension);
+                            string[] availableConversions = new DestinationTypesFilter().GetPosibleConversions(documentExtension);
                             //list all available conversions
                             foreach (string name in availableConversions)
                             {
