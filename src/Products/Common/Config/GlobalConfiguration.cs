@@ -2,6 +2,7 @@
 using GroupDocs.Total.WebForms.Products.Signature.Config;
 using GroupDocs.Total.WebForms.Products.Viewer.Config;
 using GroupDocs.Total.WebForms.Products.Comparison.Config;
+using GroupDocs.Total.WebForms.Products.Conversion.Config;
 
 namespace GroupDocs.Total.WebForms.Products.Common.Config
 {
@@ -17,12 +18,13 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
         public ViewerConfiguration Viewer;
         public AnnotationConfiguration Annotation;
         public ComparisonConfiguration Comparison;
+        private readonly ConversionConfiguration Conversion;
 
         /// <summary>
         /// Get all configurations
         /// </summary>
         public GlobalConfiguration()
-        {            
+        {
             Server = new ServerConfiguration();
             Application = new ApplicationConfiguration();
             Signature = new SignatureConfiguration();
@@ -30,6 +32,12 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
             Common = new CommonConfiguration();
             Annotation = new AnnotationConfiguration();
             Comparison = new ComparisonConfiguration();
+            Conversion = new ConversionConfiguration();
+        }
+
+        public ConversionConfiguration GetConversionConfiguration()
+        {
+            return Conversion;
         }
     }
 }

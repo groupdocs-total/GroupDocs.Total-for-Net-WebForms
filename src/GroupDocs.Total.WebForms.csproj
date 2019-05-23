@@ -50,6 +50,9 @@
     <Reference Include="GroupDocs.Comparison, Version=19.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\GroupDocs.Comparison.19.1.0\lib\GroupDocs.Comparison.dll</HintPath>
     </Reference>
+    <Reference Include="GroupDocs.Conversion, Version=19.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\GroupDocs.Conversion.19.4.0\lib\GroupDocs.Conversion.dll</HintPath>
+    </Reference>
     <Reference Include="GroupDocs.Signature, Version=19.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\GroupDocs.Signature.19.1.0\lib\GroupDocs.Signature.dll</HintPath>
     </Reference>
@@ -66,6 +69,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -258,6 +263,7 @@
     <Content Include="Resources\viewer\css\viewer.mobile.css" />
     <Content Include="Resources\viewer\images\logo.png" />
     <Content Include="Resources\viewer\js\viewer.js" />
+    <Content Include="Conversion.aspx" />
     <Content Include="Viewer.aspx" />
     <Content Include="Web.config" />
     <Content Include="packages.config" />
@@ -347,6 +353,12 @@
     <Compile Include="Products\Comparison\Service\ComparisonServiceImpl.cs" />
     <Compile Include="Products\Comparison\Service\IComparisonService.cs" />
     <Compile Include="Products\Comparison\Util\TransformFiles.cs" />
+    <Compile Include="Products\Conversion\Config\ConversionConfiguration.cs" />
+    <Compile Include="Products\Conversion\Controllers\ConversionApiController.cs" />
+    <Compile Include="Products\Conversion\Entity\Web\Request\ConversionPostedData.cs" />
+    <Compile Include="Products\Conversion\Entity\Web\Response\ConversionTypesEntity.cs" />
+    <Compile Include="Products\Conversion\Filter\DestinationTypesFilter.cs" />
+    <Compile Include="Products\Conversion\Manager\ConversionManager.cs" />
     <Compile Include="Products\Signature\Config\SignatureConfiguration.cs" />
     <Compile Include="Products\Signature\Controllers\SignatureApiController.cs" />
     <Compile Include="Products\Signature\Entity\Directory\BarcodeDataDirectoryEntity.cs" />
@@ -411,6 +423,10 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Conversion.aspx.cs">
+      <DependentUpon>Conversion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Viewer.aspx.cs">
       <DependentUpon>Viewer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
