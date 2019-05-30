@@ -27,11 +27,11 @@
     <script type="text/javascript">
         $('#element').comparison({
             applicationPath: 'http://<%=config.Server.HostAddress%>:<%=config.Server.HttpPort%>/comparison/',
-            download: <%=config.Common.isDownload.ToString().ToLowerInvariant()%>,
-            upload: <%=config.Common.isUpload.ToString().ToLowerInvariant()%>,
-            print: <%=config.Common.isPrint.ToString().ToLowerInvariant()%>,
-            rewrite: <%=config.Common.isRewrite.ToString().ToLowerInvariant()%>,
-            preloadResultPageCount: <%=config.Common.isRewrite.ToString().ToLowerInvariant()%>,
+            download: <%=config.Common.download.ToString().ToLowerInvariant()%>,
+            upload: <%=config.Common.upload.ToString().ToLowerInvariant()%>,
+            print: <%=config.Common.print.ToString().ToLowerInvariant()%>,
+            rewrite: <%=config.Common.rewrite.ToString().ToLowerInvariant()%>,
+            preloadResultPageCount: <%=config.Comparison.GetPreloadResultPageCount().ToString().ToLowerInvariant()%>,
             multiComparing: <%=config.Comparison.GetIsMultiComparing().ToString().ToLowerInvariant()%>,
         });
     </script>
