@@ -1,5 +1,6 @@
 ﻿using GroupDocs.Total.WebForms.Products.Common.Entity.Web;
 using GroupDocs.Total.WebForms.Products.Common.Resources;
+using GroupDocs.Total.WebForms.Products.Viewer.Config;
 using GroupDocs.Total.WebForms.Products.Viewer.Entity.Web;
 using GroupDocs.Viewer.Config;
 using GroupDocs.Viewer.Converter.Options;
@@ -58,6 +59,17 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
                 // initialize Viewer instance for the Image mode
                 viewerImageHandler = new ViewerImageHandler(config);
             }
+        }
+
+        /// <summary>
+        /// Load Viewr configuration
+        /// </summary>       
+        /// <returns>Viewer configuration</returns>
+        [HttpGet]
+        [Route("viewer/loadConfig")]
+        public ViewerConfiguration LoadConfig()
+        {
+            return globalConfiguration.Viewer;
         }
 
         /// <summary>
@@ -138,7 +150,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
             catch (System.Exception ex)
             {
                 // set exception message
-                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex, password));
+                return Request.CreateResponse(HttpStatusCode.Forbidden, new Resources().GenerateException(ex, password));
             }
         }
 
@@ -174,7 +186,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
             catch (System.Exception ex)
             {
                 // set exception message
-                return Request.CreateResponse(HttpStatusCode.OK, new Resources().GenerateException(ex, password));
+                return Request.CreateResponse(HttpStatusCode.Forbidden, new Resources().GenerateException(ex, password));
             }
         }
 
