@@ -133,9 +133,9 @@ namespace GroupDocs.Total.WebForms.AppDomainGenerator
         }
 
         private void SetLicense(dynamic obj) {
-            if (!String.IsNullOrEmpty(globalConfiguration.Application.LicensePath))
+            if (!String.IsNullOrEmpty(globalConfiguration.GetApplicationConfiguration().GetLicensePath()))
             {
-                obj.SetLicense(globalConfiguration.Application.LicensePath);
+                obj.SetLicense(globalConfiguration.GetApplicationConfiguration().GetLicensePath());
             }
         }
     }

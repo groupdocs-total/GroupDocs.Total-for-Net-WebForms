@@ -1,9 +1,9 @@
 ﻿using GroupDocs.Total.WebForms.Products.Annotation.Config;
-using GroupDocs.Total.WebForms.Products.Signature.Config;
-using GroupDocs.Total.WebForms.Products.Viewer.Config;
 using GroupDocs.Total.WebForms.Products.Comparison.Config;
 using GroupDocs.Total.WebForms.Products.Conversion.Config;
 using GroupDocs.Total.WebForms.Products.Editor.Config;
+using GroupDocs.Total.WebForms.Products.Signature.Config;
+using GroupDocs.Total.WebForms.Products.Viewer.Config;
 
 namespace GroupDocs.Total.WebForms.Products.Common.Config
 {
@@ -12,13 +12,13 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
     /// </summary>
     public class GlobalConfiguration
     {
-        public ServerConfiguration Server;
-        public ApplicationConfiguration Application;
-        public CommonConfiguration Common;
-        public SignatureConfiguration Signature;
-        public ViewerConfiguration Viewer;
-        public AnnotationConfiguration Annotation;
-        public ComparisonConfiguration Comparison;
+        private readonly ServerConfiguration Server;
+        private readonly ApplicationConfiguration Application;
+        private readonly CommonConfiguration Common;
+        private readonly SignatureConfiguration Signature;
+        private readonly ViewerConfiguration Viewer;
+        private readonly AnnotationConfiguration Annotation;
+        private readonly ComparisonConfiguration Comparison;
         private readonly ConversionConfiguration Conversion;
         private readonly EditorConfiguration Editor;
 
@@ -38,14 +38,50 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
             Editor = new EditorConfiguration();
         }
 
-        public ConversionConfiguration GetConversionConfiguration()
-        {
-            return Conversion;
-        }
 
         public EditorConfiguration GetEditorConfiguration()
         {
             return Editor;
+        }
+
+        public ServerConfiguration GetServerConfiguration()
+        {
+            return Server;
+        }
+
+        public ApplicationConfiguration GetApplicationConfiguration()
+        {
+            return Application;
+        }
+
+        public CommonConfiguration GetCommonConfiguration()
+        {
+            return Common;
+        }
+
+        public ViewerConfiguration GetViewerConfiguration()
+        {
+            return Viewer;
+        }
+
+        public AnnotationConfiguration GetAnnotationConfiguration()
+        {
+            return Annotation;
+        }
+
+        public SignatureConfiguration GetSignatureConfiguration()
+        {
+            return Signature;
+        }
+
+        public ComparisonConfiguration GetComparisonConfiguration()
+        {
+            return Comparison;
+        }
+
+        public ConversionConfiguration GetConversionConfiguration()
+        {
+            return Conversion;
         }
     }
 }

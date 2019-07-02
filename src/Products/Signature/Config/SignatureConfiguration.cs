@@ -11,7 +11,7 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Config
     /// </summary>
     public class SignatureConfiguration
     {
-        public string FilesDirectory = "DocumentSamples/Signature";
+        public string FilesDirectory = "DocumentSamples/Signature";       
         public string DefaultDocument = "";
         public string DataDirectory = "";
         public int PreloadPageCount = 0;
@@ -43,7 +43,7 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Config
                 {
                     Directory.CreateDirectory(FilesDirectory);
                 }
-            }
+            }           
             DataDirectory = valuesGetter.GetStringPropertyValue("dataDirectory", DataDirectory);
             DefaultDocument = valuesGetter.GetStringPropertyValue("defaultDocument", DefaultDocument);
             isTextSignature = valuesGetter.GetBooleanPropertyValue("textSignature", isTextSignature);
@@ -54,7 +54,7 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Config
             isStampSignature = valuesGetter.GetBooleanPropertyValue("stampSignature", isStampSignature);
             isHandSignature = valuesGetter.GetBooleanPropertyValue("handSignature", isHandSignature);
             isDownloadOriginal = valuesGetter.GetBooleanPropertyValue("downloadOriginal", isDownloadOriginal);
-            isDownloadSigned = valuesGetter.GetBooleanPropertyValue("downloadSigned", isDownloadSigned);
+            isDownloadSigned = valuesGetter.GetBooleanPropertyValue("downloadSigned", isDownloadSigned);            
             PreloadPageCount = valuesGetter.GetIntegerPropertyValue("preloadPageCount", PreloadPageCount);
         }
 

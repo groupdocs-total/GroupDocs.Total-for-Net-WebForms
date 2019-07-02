@@ -87,7 +87,7 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Service
                             {
                                 currentStream.CopyTo(file);
                             }
-                            file.Position = 0;
+                            file.Position = 0;                    
                             resultData.files.Add(file);
                         }
                     }
@@ -96,9 +96,9 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Service
             else
             {
                 for (int i = 0; i < request.Files.Count; i++)
-                {
+                {                   
                     Stream stream = request.Files[i].InputStream;
-                    stream.Position = 0;
+                    stream.Position = 0;                  
                     resultData.files.Add(stream);
                 }
                 resultData.firstPath = (String.IsNullOrEmpty(request.Form["firstPath"])) ? request.Files["firstFile"].FileName : request.Form["firstPath"];
@@ -112,8 +112,8 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Service
         public string CalculateResultFileName(string documentGuid, string index, string ext)
         {
             // configure file name for results
-            string directory = globalConfiguration.Comparison.GetResultDirectory();
-            string resultDirectory = String.IsNullOrEmpty(directory) ? globalConfiguration.Comparison.GetFilesDirectory() : directory;
+            string directory = globalConfiguration.GetComparisonConfiguration().GetResultDirectory();
+            string resultDirectory = String.IsNullOrEmpty(directory) ? globalConfiguration.GetComparisonConfiguration().GetFilesDirectory() : directory;
             if (!Directory.Exists(resultDirectory))
             {
                 Directory.CreateDirectory(resultDirectory);
@@ -158,7 +158,8 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Service
             // create new comparer
             Comparer comparer = new Comparer();
             // create setting for comparing
-            ComparisonSettings settings = new ComparisonSettings();           
+            ComparisonSettings settings = new ComparisonSettings();
+
             // compare two documents
             compareResult = comparer.Compare(firstPath,
                 compareRequest.firstPassword,
@@ -173,7 +174,7 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Service
             string saveTemp = null;
             if (Path.GetExtension(firstPath).Equals(".html") || Path.GetExtension(firstPath).Equals(".htm"))
             {
-                saveTemp = Path.Combine(globalConfiguration.Comparison.GetResultDirectory(), "temp.html");
+                saveTemp = Path.Combine(globalConfiguration.GetComparisonConfiguration().GetResultDirectory(), "temp.html");
             }
             // convert results
             CompareResultResponse compareResultResponse = GetCompareResultResponse(compareResult, saveTemp);
@@ -208,8 +209,8 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Service
             }
             string saveTemp = null;
             if (fileExt.Equals(".html") || fileExt.Equals(".htm"))
-            {
-                saveTemp = Path.Combine(globalConfiguration.Comparison.GetResultDirectory(), "temp.html");
+            {               
+                saveTemp = Path.Combine(globalConfiguration.GetComparisonConfiguration().GetResultDirectory(), "temp.html");
             }
             // convert results
             CompareResultResponse compareResultResponse = GetCompareResultResponse(compareResult, saveTemp);
@@ -232,11 +233,11 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Service
                 // get all the files from a directory
                 if (string.IsNullOrEmpty(relDirPath))
                 {
-                    relDirPath = globalConfiguration.Comparison.GetFilesDirectory();
+                    relDirPath = globalConfiguration.GetComparisonConfiguration().GetFilesDirectory();
                 }
                 else
                 {
-                    relDirPath = Path.Combine(globalConfiguration.Comparison.GetFilesDirectory(), relDirPath);
+                    relDirPath = Path.Combine(globalConfiguration.GetComparisonConfiguration().GetFilesDirectory(), relDirPath);
                 }
 
                 List<string> allFiles = new List<string>(Directory.GetFiles(relDirPath));
@@ -250,8 +251,8 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Service
                 {
                     FileInfo fileInfo = new FileInfo(file);
                     // check if current file/folder is hidden
-                    if (fileInfo.Attributes.HasFlag(FileAttributes.Hidden) ||
-                        Path.GetFileName(file).Equals(Path.GetFileName(globalConfiguration.Comparison.GetFilesDirectory())))
+                    if (fileInfo.Attributes.HasFlag(FileAttributes.Hidden) || 
+                        Path.GetFileName(file).Equals(Path.GetFileName(globalConfiguration.GetComparisonConfiguration().GetFilesDirectory())))
                     {
                         // ignore current file and skip to next one
                         continue;
@@ -333,9 +334,9 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Service
                 throw new Exception("Something went wrong. We've got null result.");
             }
             string saveTemp = null;
-            if (ext.Equals("html") || ext.Equals("htm"))
+            if(ext.Equals("html") || ext.Equals("htm"))
             {
-                saveTemp = Path.Combine(globalConfiguration.Comparison.GetResultDirectory(), "temp.html");
+                saveTemp = Path.Combine(globalConfiguration.GetComparisonConfiguration().GetResultDirectory(), "temp.html");
             }
             // convert results
             CompareResultResponse compareResultResponse = GetCompareResultResponse(compareResult, saveTemp);
@@ -365,13 +366,13 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Service
             if (changes != null && changes.Length > 0)
             {
                 if (!String.IsNullOrEmpty(saveTemp))
-                {
+                {                                     
                     compareResult.SaveDocument(saveTemp);
-                    images = compareResult.GetImages();
+                    images = compareResult.GetImages();                    
                 }
                 else
                 {
-                    images = compareResult.GetImages();
+                    images = compareResult.GetImages();                   
                 }
                 List<string> pages = SaveImages(images, guid);
                 // save all pages
@@ -379,7 +380,7 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Service
             }
             else
             {
-                images = compareResult.GetImages();
+               images = compareResult.GetImages();
                 int last = images.Length - 1;
                 // save only summary page
                 compareResultResponse.AddPage(SaveFile(guid, last.ToString(), images[last], JPG));
