@@ -8,8 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Viewer for .NET WebForms</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="resources/angular/viewer/dist//assets/css/all.min.css" />
+    <link rel="icon" type="image/x-icon" href="/resources/angular/viewer/favicon.ico" />
 </head>
 <body>
     <client-root></client-root>
