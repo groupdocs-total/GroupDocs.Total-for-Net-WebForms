@@ -506,6 +506,10 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                 // initiate AnnotatedDocument object
                 // initiate list of annotations to add
                 List<AnnotationInfo> annotations = new List<AnnotationInfo>();
+                // get document info - required to get document page height and calculate annotation top position
+                string fileName = System.IO.Path.GetFileName(documentGuid);
+                FileInfo fi = new FileInfo(documentGuid);
+                DirectoryInfo parentDir = fi.Directory;
 
                 string documentPath = "";
                 string parentDirName = parentDir.Name;
@@ -703,6 +707,9 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
 
         private string GetDocumentPath(string documentGuid)
         {
+            string fileName = System.IO.Path.GetFileName(documentGuid);
+            FileInfo fi = new FileInfo(documentGuid);
+            DirectoryInfo parentDir = fi.Directory;
             string documentPath = "";
             string parentDirName = parentDir.Name;
             if (parentDir.FullName == GlobalConfiguration.GetAnnotationConfiguration().GetFilesDirectory().Replace("/", "\\"))
@@ -711,19 +718,15 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
             }
             else
             {
-                string fileName = System.IO.Path.GetFileName(documentGuid);
+                documentPath = Path.Combine(parentDirName, fileName);
                 if (String.IsNullOrEmpty(Path.GetDirectoryName(documentGuid)))
                 {
-                    documentPath = Path.Combine(GlobalConfiguration.Annotation.GetFilesDirectory(), documentGuid);
+                    documentPath = Path.Combine(GlobalConfiguration.GetAnnotationConfiguration().GetFilesDirectory(), documentGuid);
                 }
                 else
                 {
-                    FileInfo fi = new FileInfo(documentGuid);
-                    DirectoryInfo parentDir = fi.Directory;
 
-                    string parentDirName = parentDir.Name;
-
-                    if (parentDir.FullName == GlobalConfiguration.Annotation.GetFilesDirectory().Replace("/", "\\"))
+                    if (parentDir.FullName == GlobalConfiguration.GetAnnotationConfiguration().GetFilesDirectory().Replace("/", "\\"))
                     {
                         documentPath = documentGuid;
                     }
