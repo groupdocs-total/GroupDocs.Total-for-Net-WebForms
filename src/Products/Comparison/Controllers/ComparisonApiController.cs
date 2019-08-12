@@ -1,6 +1,7 @@
 ﻿using GroupDocs.Total.WebForms.Products.Common.Entity.Web;
 using GroupDocs.Total.WebForms.Products.Common.Resources;
 using GroupDocs.Total.WebForms.Products.Common.Util.LowercaseContractResolver;
+using GroupDocs.Total.WebForms.Products.Comparison.Config;
 using GroupDocs.Total.WebForms.Products.Comparison.Model.Request;
 using GroupDocs.Total.WebForms.Products.Comparison.Model.Response;
 using GroupDocs.Total.WebForms.Products.Comparison.Service;
@@ -34,7 +35,18 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Controllers
             globalConfiguration = new Common.Config.GlobalConfiguration();
             comparisonService = new ComparisonServiceImpl(globalConfiguration);
         }
-               
+
+        /// <summary>
+        /// Load Comparison configuration
+        /// </summary>
+        /// <returns>Comparison configuration</returns>
+        [HttpGet]
+        [Route("comparison/loadConfig")]
+        public ComparisonConfiguration LoadConfig()
+        {
+            return globalConfiguration.Comparison;
+        }
+
         /// <summary>
         /// Get all files and directories from storage
         /// </summary>
