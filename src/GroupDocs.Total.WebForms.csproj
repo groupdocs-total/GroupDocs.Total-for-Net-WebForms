@@ -53,6 +53,9 @@
     <Reference Include="GroupDocs.Conversion, Version=19.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\GroupDocs.Conversion.19.6.0\lib\GroupDocs.Conversion.dll</HintPath>
     </Reference>
+    <Reference Include="GroupDocs.Editor, Version=19.5.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\GroupDocs.Editor.19.5.0\lib\GroupDocs.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="GroupDocs.Signature, Version=19.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\GroupDocs.Signature.19.6.0\lib\GroupDocs.Signature.dll</HintPath>
     </Reference>
@@ -153,6 +156,7 @@
     <Content Include="Total.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Conversion.aspx" />
+    <Content Include="Editor.aspx" />
     <Content Include="Viewer.aspx" />
     <Content Include="Web.config" />
     <Content Include="packages.config" />
@@ -236,6 +240,10 @@
     <Compile Include="Products\Conversion\Entity\Web\Response\ConversionTypesEntity.cs" />
     <Compile Include="Products\Conversion\Filter\DestinationTypesFilter.cs" />
     <Compile Include="Products\Conversion\Manager\ConversionManager.cs" />
+    <Compile Include="Products\Editor\Config\EditorConfiguration.cs" />
+    <Compile Include="Products\Editor\Controllers\EditorApiController.cs" />
+    <Compile Include="Products\Editor\Entity\Web\EditableDocumentType.cs" />
+    <Compile Include="Products\Editor\Entity\Web\Request\EditDocumentRequest.cs" />
     <Compile Include="Products\Signature\Config\SignatureConfiguration.cs" />
     <Compile Include="Products\Signature\Controllers\SignatureApiController.cs" />
     <Compile Include="Products\Signature\Entity\Directory\BarcodeDataDirectoryEntity.cs" />
@@ -304,6 +312,13 @@
       <DependentUpon>Conversion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Editor.aspx.cs">
+      <DependentUpon>Editor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Editor.aspx.designer.cs">
+      <DependentUpon>Editor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Viewer.aspx.cs">
       <DependentUpon>Viewer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -350,7 +365,8 @@
   <Target Name="BeforeBuild">
     <Exec Command="..\packages\Node-Kit.11.1.0.1\node\win\node.exe ..\packages\Node-Kit.11.1.0.1\npm\bin\npm-cli.js install" Condition=" '$(OS)' == 'Windows_NT' " />
     <Exec Command="..\packages\Node-Kit.11.1.0.1\node\win\node.exe ..\packages\Node-Kit.11.1.0.1\npm\bin\npm-cli.js update" Condition=" '$(OS)' == 'Windows_NT' " />
-    <Exec Command="..\packages\Node-Kit.11.1.0.1\node\win\node.exe .\node_modules\gulp\bin\gulp.js build" Condition=" '$(OS)' == 'Windows_NT' " />
+    <Exec WorkingDirectory="client\" Command="..\..\packages\Node-Kit.11.1.0.1\node\win\node.exe ..\..\packages\Node-Kit.11.1.0.1\npm\bin\npm-cli.js install" Condition=" '$(OS)' == 'Windows_NT' " />
+    <Exec WorkingDirectory="client\" Command="..\..\packages\Node-Kit.11.1.0.1\node\win\node.exe ..\..\packages\Node-Kit.11.1.0.1\npm\bin\npm-cli.js run build  --scripts-prepend-node-path" Condition=" '$(OS)' == 'Windows_NT' " />
     <Exec Command="..\packages\Node-Kit.11.1.0.1\node\win\node.exe .\node_modules\gulp\bin\gulp.js copy" Condition=" '$(OS)' == 'Windows_NT' " />
   </Target>
   <Target Name="AfterBuild">

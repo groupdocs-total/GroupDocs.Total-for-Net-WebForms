@@ -1,6 +1,7 @@
 ﻿using GroupDocs.Total.WebForms.Products.Common.Entity.Web;
 using GroupDocs.Total.WebForms.Products.Common.Resources;
 using GroupDocs.Total.WebForms.Products.Common.Util.LowercaseContractResolver;
+using GroupDocs.Total.WebForms.Products.Comparison.Config;
 using GroupDocs.Total.WebForms.Products.Comparison.Model.Request;
 using GroupDocs.Total.WebForms.Products.Comparison.Model.Response;
 using GroupDocs.Total.WebForms.Products.Comparison.Service;
@@ -34,7 +35,18 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Controllers
             globalConfiguration = new Common.Config.GlobalConfiguration();
             comparisonService = new ComparisonServiceImpl(globalConfiguration);
         }
-               
+
+        /// <summary>
+        /// Load Comparison configuration
+        /// </summary>
+        /// <returns>Comparison configuration</returns>
+        [HttpGet]
+        [Route("comparison/loadConfig")]
+        public ComparisonConfiguration LoadConfig()
+        {
+            return globalConfiguration.GetComparisonConfiguration();
+        }
+
         /// <summary>
         /// Get all files and directories from storage
         /// </summary>
@@ -85,7 +97,7 @@ namespace GroupDocs.Total.WebForms.Products.Comparison.Controllers
             {
                 string url = HttpContext.Current.Request.Form["url"];
                 // get documents storage path
-                string documentStoragePath = globalConfiguration.Comparison.GetFilesDirectory();
+                string documentStoragePath = globalConfiguration.GetComparisonConfiguration().GetFilesDirectory();
                 bool rewrite = bool.Parse(HttpContext.Current.Request.Form["rewrite"]);
                 string fileSavePath = "";
                 if (string.IsNullOrEmpty(url))
