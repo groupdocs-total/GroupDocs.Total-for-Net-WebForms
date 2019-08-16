@@ -2,12 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ViewerModule } from "@groupdocs.examples.angular/viewer";
+import { ComparisonModule } from "@groupdocs.examples.angular/comparison";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,
-    ViewerModule],
+    ComparisonModule],
   providers: [],
   bootstrap: [AppComponent]
 })
