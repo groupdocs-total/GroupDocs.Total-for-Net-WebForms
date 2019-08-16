@@ -26,12 +26,13 @@
     <div id="element"></div>
     <script type="text/javascript">
         $('#element').comparison({
-            applicationPath: 'http://<%=config.Server.HostAddress%>:<%=config.Server.HttpPort%>/comparison/',
-            download: <%=config.Common.download.ToString().ToLowerInvariant()%>,
-            upload: <%=config.Common.upload.ToString().ToLowerInvariant()%>,
-            print: <%=config.Common.print.ToString().ToLowerInvariant()%>,
-            rewrite: <%=config.Common.rewrite.ToString().ToLowerInvariant()%>,
-            preloadResultPageCount: <%=config.Comparison.GetPreloadResultPageCount().ToString().ToLowerInvariant()%>            
+            applicationPath: 'http://<%=config.GetServerConfiguration().HostAddress%>:<%=config.GetServerConfiguration().HttpPort%>/comparison/',
+            download: <%=config.GetCommonConfiguration().download.ToString().ToLowerInvariant()%>,
+            upload: <%=config.GetCommonConfiguration().upload.ToString().ToLowerInvariant()%>,
+            print: <%=config.GetCommonConfiguration().print.ToString().ToLowerInvariant()%>,
+            rewrite: <%=config.GetCommonConfiguration().rewrite.ToString().ToLowerInvariant()%>,
+            preloadResultPageCount: <%=config.GetComparisonConfiguration().GetPreloadResultPageCount().ToString().ToLowerInvariant()%>,
+            multiComparing: <%=config.GetComparisonConfiguration().GetIsMultiComparing().ToString().ToLowerInvariant()%>,
         });
     </script>
 </body>

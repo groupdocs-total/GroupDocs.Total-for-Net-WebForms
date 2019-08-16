@@ -19,15 +19,15 @@ namespace GroupDocs.Total.WebForms.Products.Common.Resources
         public static string GetFreeFileName(string directory, string fileName)
         {
             string resultFileName = "";
-            try
+            // get all files from the directory
+            string[] listOfFiles = Directory.GetFiles(directory);
+            if (listOfFiles.Length > 0)
             {
-                // get all files from the directory
-                string[] listOfFiles = Directory.GetFiles(directory);
                 for (int i = 0; i < listOfFiles.Length; i++)
                 {
                     // check if file with current name already exists
                     int number = i + 1;
-                    string newFileName = Path.GetFileNameWithoutExtension(fileName) + "-Copy(" + number + ")." + Path.GetExtension(fileName);
+                    string newFileName = Path.GetFileNameWithoutExtension(fileName) + "-Copy(" + number + ")" + Path.GetExtension(fileName);
                     resultFileName = Path.Combine(directory, newFileName);
                     if (File.Exists(resultFileName))
                     {
@@ -39,9 +39,9 @@ namespace GroupDocs.Total.WebForms.Products.Common.Resources
                     }
                 }
             }
-            catch (System.Exception e)
+            else
             {
-                throw e;
+                resultFileName = fileName;
             }
             return resultFileName;
         }
