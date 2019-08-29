@@ -1,17 +1,15 @@
 ﻿using GroupDocs.Total.WebForms.Products.Common.Config;
 using GroupDocs.Total.WebForms.Products.Common.Util.Parser;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace GroupDocs.Total.WebForms.Products.Conversion.Config
 {
     /// <summary>
     /// ConversionConfiguration
     /// </summary>
-    public class ConversionConfiguration
+    public class ConversionConfiguration : CommonConfiguration
     {
         private string FilesDirectory = "DocumentSamples/Conversion";
         private string ResultDirectory = "DocumentSamples/Conversion/Converted";
