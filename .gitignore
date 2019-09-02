@@ -15,3 +15,9 @@ src/package-lock.json
 /GroupDocs.Total.WebForms.Test/GroupDocs.Total.WebForms.Test.csproj.user
 /GroupDocs.Total.WebForms.Test/bin
 /GroupDocs.Total.WebForms.Test/obj
+src/Licenses
+!src/Licenses/.gitkeep
+src/DocumentSamples
+!src/DocumentSamples/.gitkeep
+!.gitkeep
+.DS_Store
