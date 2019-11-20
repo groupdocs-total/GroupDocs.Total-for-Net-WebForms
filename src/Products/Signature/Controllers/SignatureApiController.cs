@@ -283,7 +283,7 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Controllers
         [Route("signature/downloadSigned")]
         public HttpResponseMessage DownloadSigned(SignaturePostedDataEntity signDocumentRequest)
         {
-            SignatureDataEntity[] signaturesData = signDocumentRequest.signaturesData;
+            List<SignatureDataEntity> signaturesData = signDocumentRequest.signaturesData;
             if (signaturesData == null || signaturesData.Count() == 0)
             {
                 // set exception message
@@ -319,7 +319,7 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Controllers
                 // get/set parameters
                 string documentGuid = postedData.guid;
                 password = postedData.password;
-                SignatureDataEntity[] signaturesData = postedData.signaturesData;
+                List<SignatureDataEntity> signaturesData = postedData.signaturesData;
                 SignatureOptionsCollection signsCollection = new SignatureOptionsCollection();
                 // check if document type is image                
                 if (SupportedImageFormats.Contains(Path.GetExtension(documentGuid)))
@@ -327,7 +327,7 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Controllers
                     postedData.documentType = "image";
                 }
                 // set signature password if required
-                for (int i = 0; i < signaturesData.Length; i++)
+                for (int i = 0; i < signaturesData.Count; i++)
                 {
                     switch (signaturesData[i].SignatureType)
                     {
@@ -871,7 +871,7 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Controllers
                 // get/set parameters
                 string documentGuid = postedData.guid;
                 password = postedData.password;
-                SignatureDataEntity[] signaturesData = postedData.signaturesData;
+                List<SignatureDataEntity> signaturesData = postedData.signaturesData;
                 SignatureOptionsCollection signsCollection = new SignatureOptionsCollection();
                 // check if document type is image                
                 if (SupportedImageFormats.Contains(Path.GetExtension(documentGuid)))
@@ -879,7 +879,7 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Controllers
                     postedData.documentType = "image";
                 }
                 // set signature password if required
-                for (int i = 0; i < signaturesData.Length; i++)
+                for (int i = 0; i < signaturesData.Count; i++)
                 {
                     switch (signaturesData[i].SignatureType)
                     {
