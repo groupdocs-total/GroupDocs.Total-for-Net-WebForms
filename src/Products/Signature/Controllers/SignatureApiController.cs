@@ -371,9 +371,6 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Controllers
             }
         }
 
-
-
-
         /// <summary>
         /// Upload document
         /// </summary>      
@@ -467,7 +464,6 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Resources().GenerateException(ex));
             }
         }
-
 
         /// <summary>
         /// Load selected signature image preview
