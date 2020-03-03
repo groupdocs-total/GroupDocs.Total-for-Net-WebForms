@@ -58,7 +58,7 @@
                 </li>
                 <li>
                     <a href="metadata">
-                        <img src="/resources/total/images/groupdocs-metadata-d.png" />
+                        <img src="/resources/total/images/groupdocs-metadata.png" />
                         <div>
                             <h5>GroupDocs</h5>
                             <h6>Metadata</h6>
