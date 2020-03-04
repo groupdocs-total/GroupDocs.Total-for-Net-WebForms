@@ -1,8 +1,7 @@
 # GroupDocs.Total for .NET Web.Forms Example
-###### version 0.4.18
 
-[![Build status](https://ci.appveyor.com/api/projects/status/boo4pnp61r6b8kqp/branch/master?svg=true)](https://ci.appveyor.com/project/egorovpavel/groupdocs-total-for-net-webforms/branch/master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dbaad4274f364d91929418a721ae2a45)](https://www.codacy.com/app/GroupDocs/GroupDocs.Total-for-NET-WebForms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=groupdocs-total/GroupDocs.Total-for-NET-WebForms&amp;utm_campaign=Badge_Grade)
+[![Build status](https://ci.appveyor.com/api/projects/status/cfeug0bbgs6nwxoc/branch/master?svg=true)](https://ci.appveyor.com/project/bobkovalex/groupdocs-total-for-net-webforms/branch/master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2957c8ed0a6f42b2b25bd615cbab2695)](https://www.codacy.com/gh/groupdocs-total/GroupDocs.Total-for-NET-WebForms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=groupdocs-total/GroupDocs.Total-for-NET-WebForms&amp;utm_campaign=Badge_Grade)
 [![GitHub license](https://img.shields.io/github/license/groupdocs-total/GroupDocs.Total-for-NET-WebForms.svg)](https://github.com/groupdocs-total/GroupDocs.Total-for-NET-WebForms/blob/master/LICENSE)
 
 ## System Requirements
@@ -23,6 +22,7 @@ This web application demonstrates the following document manipulation capabiliti
 - Compare documents 
 - Edit documents
 - Convert documents
+- Add, edit or remove metadata
 
 **Note:** without a license application will run in trial mode, purchase [GroupDocs.Total for .NET license](https://purchase.groupdocs.com/order-online-step-1-of-8.aspx) or request [GroupDocs.Total for .NET temporary license](https://purchase.groupdocs.com/temporary-license).
 
@@ -181,6 +181,24 @@ Coming soon
 - Download documents
 - Upload documents
 - Print document
+#### [Add, edit or remove metadata](https://github.com/groupdocs-metadata/GroupDocs.Metadata-for-WebForms-MVC) with GroupDocs.Metadata
+- Add Metadata to Office Documents
+- Edit or update Metadata in Office Documents
+- Remove Metadata from Office Documents
+- Clean, modern and intuitive design
+- Easily switchable colour theme (create your own colour theme in 5 minutes)
+- Responsive design
+- Mobile support (open application on any mobile device)
+- Support over 50 documents and image formats
+- Fully customizable navigation panel
+- Open password protected documents
+- Download documents
+- Upload documents
+- Print document
+- Smooth document scrolling
+- Multi-language support for displaying errors
+- Cross-browser support (Safari, Chrome, Opera, Firefox)
+- Cross-platform support (Windows, Linux, MacOS)
 
 ## How to run
 
