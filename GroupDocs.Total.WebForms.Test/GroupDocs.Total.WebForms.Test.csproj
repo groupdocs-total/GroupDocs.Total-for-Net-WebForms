@@ -78,6 +78,7 @@
     <Compile Include="SignatureTest.cs" />
     <Compile Include="ComparisonTest.cs" />
     <Compile Include="TotalTest.cs" />
+    <Compile Include="MetadataTest.cs" />
     <Compile Include="ViewerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
