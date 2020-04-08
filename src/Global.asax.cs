@@ -18,6 +18,7 @@ namespace GroupDocs.Total.WebForms
             string comparisonAssemblyName = "GroupDocs.Comparison.dll";
             string conversionAssemblyName = "GroupDocs.Conversion.dll";
             string editorAssemblyName = "GroupDocs.Editor.dll";
+            string metadataAssemblyName = "GroupDocs.Metadata.dll";
             // set GroupDocs.Viewer license
             DomainGenerator viewerDomainGenerator = new DomainGenerator(viewerAssemblyName, "GroupDocs.Viewer.License");
             viewerDomainGenerator.SetViewerLicense();
@@ -36,6 +37,9 @@ namespace GroupDocs.Total.WebForms
             // set GroupDocs.Editor license
             DomainGenerator editorDomainGenerator = new DomainGenerator(editorAssemblyName, "GroupDocs.Editor.License");
             editorDomainGenerator.SetEditorLicense();
+            // set GroupDocs.Metadata license
+            DomainGenerator metadataDomainGenerator = new DomainGenerator(metadataAssemblyName, "GroupDocs.Metadata.License");
+            metadataDomainGenerator.SetMetadataLicense();
 
             // Code that runs on application startup
             GlobalConfiguration.Configure(WebApiConfig.Register);
