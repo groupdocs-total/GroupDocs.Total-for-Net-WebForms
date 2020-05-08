@@ -105,8 +105,9 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
                 FileInfo fileInfo = new FileInfo(file);
                 // check if current file/folder is hidden
                 if (!(cacheFolderName.Equals(Path.GetFileName(file)) ||
-                    fileInfo.Attributes.HasFlag(FileAttributes.Hidden) ||
-                    Path.GetFileName(file).Equals(Path.GetFileName(globalConfiguration.GetViewerConfiguration().GetFilesDirectory()))))
+                      Path.GetFileName(file).StartsWith(".") ||
+                      fileInfo.Attributes.HasFlag(FileAttributes.Hidden) ||
+                      Path.GetFileName(file).Equals(Path.GetFileName(globalConfiguration.GetViewerConfiguration().GetFilesDirectory()))))
                 {
                     FileDescriptionEntity fileDescription = new FileDescriptionEntity
                     {
@@ -466,6 +467,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
             if (globalConfiguration.GetViewerConfiguration().GetIsHtmlMode())
             {
                 HtmlViewOptions htmlViewOptions = HtmlViewOptions.ForEmbeddedResources(_ => new MemoryStream());
+                htmlViewOptions.SpreadsheetOptions.TextOverflowMode = TextOverflowMode.HideText;
                 SetWatermarkOptions(htmlViewOptions);
 
                 if (pageNumber < 0)
@@ -544,6 +546,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
                 if (globalConfiguration.GetViewerConfiguration().GetIsHtmlMode())
                 {
                     ViewOptions viewOptions = HtmlViewOptions.ForEmbeddedResources(pageStreamFactory);
+                    viewOptions.SpreadsheetOptions.TextOverflowMode = TextOverflowMode.HideText;
 
                     viewer.View(viewOptions);
                 }
@@ -632,6 +635,7 @@ namespace GroupDocs.Total.WebForms.Products.Viewer.Controllers
                 if (globalConfiguration.GetViewerConfiguration().GetIsHtmlMode())
                 {
                     ViewOptions viewOptions = HtmlViewOptions.ForEmbeddedResources(pageStreamFactory);
+                    viewOptions.SpreadsheetOptions.TextOverflowMode = TextOverflowMode.HideText;
 
                     viewer.View(viewOptions, page.Number);
 
