@@ -9,7 +9,7 @@ namespace GroupDocs.Total.WebForms.Products.Common.Entity.Web
         [JsonProperty]
         private string guid;
 
-        ///list of pages        
+        ///list of pages
         [JsonProperty]
         private List<PageDescriptionEntity> pages = new List<PageDescriptionEntity>();
 
