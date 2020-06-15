@@ -13,7 +13,6 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Entity.Web
         public SignatureDataEntity[] signaturesData { get; set; }
         public string image { get; set; }
         public StampXmlEntity[] stampData { get; set; }
-        public XmlEntity properties { get; set; }
-        public string documentType { get; set; }      
+        public string documentType { get; set; }
     }
 }

@@ -420,7 +420,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
                     throw new InvalidDataException("Annotations data are empty");
                 }
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 // set exception message
                 throw new InvalidDataException("Failed to annotate stream");
@@ -429,7 +429,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Controllers
 
         /// <summary>
         /// Upload document
-        /// </summary>      
+        /// </summary>
         /// <returns>Uploaded document object</returns>
         [HttpPost]
         [Route("annotation/uploadDocument")]
