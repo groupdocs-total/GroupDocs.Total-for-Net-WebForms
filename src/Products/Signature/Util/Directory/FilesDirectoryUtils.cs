@@ -25,7 +25,7 @@ namespace GroupDocs.Total.WebForms.Products.Signature.Util.Directory
         /// <returns>string</returns>
         public string GetPath()
         {
-            return signatureConfiguration.FilesDirectory;
+            return signatureConfiguration.GetFilesDirectory();
         }
     }
 }
