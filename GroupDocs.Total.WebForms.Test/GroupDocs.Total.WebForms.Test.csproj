@@ -75,6 +75,7 @@
     <Compile Include="EditorTest.cs" />
     <Compile Include="AnnotationTest.cs" />
     <Compile Include="ConversionTest.cs" />
+    <Compile Include="SearchTest.cs" />
     <Compile Include="SignatureTest.cs" />
     <Compile Include="ComparisonTest.cs" />
     <Compile Include="TotalTest.cs" />
