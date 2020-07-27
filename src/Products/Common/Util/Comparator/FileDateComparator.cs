@@ -5,16 +5,16 @@ using System.IO;
 namespace GroupDocs.Total.WebForms.Products.Common.Util.Comparator
 {
     /// <summary>
-    /// FileDateComparator
+    /// FileDateComparator.
     /// </summary>
     public class FileDateComparator : IComparer<string>
     {
         /// <summary>
-        /// Compare file creation dates
+        /// Compare file creation dates.
         /// </summary>
-        /// <param name="x">string</param>
-        /// <param name="y">string</param>
-        /// <returns></returns>
+        /// <param name="x">First date to compare.</param>
+        /// <param name="y">Second date to compare.</param>
+        /// <returns>Compare result as integer.</returns>
         public int Compare(string x, string y)
         {
             string strExt1 = File.GetCreationTime(x).ToString(CultureInfo.InvariantCulture);

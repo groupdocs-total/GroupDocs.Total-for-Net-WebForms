@@ -10,7 +10,7 @@ using GroupDocs.Total.WebForms.Products.Viewer.Config;
 namespace GroupDocs.Total.WebForms.Products.Common.Config
 {
     /// <summary>
-    /// Global configuration
+    /// Global configuration.
     /// </summary>
     public class GlobalConfiguration
     {
@@ -27,77 +27,77 @@ namespace GroupDocs.Total.WebForms.Products.Common.Config
         private readonly SearchConfiguration Search;
 
         /// <summary>
-        /// Get all configurations
+        /// Initializes a new instance of the <see cref="GlobalConfiguration"/> class.
+        /// Get all configurations.
         /// </summary>
         public GlobalConfiguration()
         {
-            Server = new ServerConfiguration();
-            Application = new ApplicationConfiguration();
-            Signature = new SignatureConfiguration();
-            Viewer = new ViewerConfiguration();
-            Common = new CommonConfiguration();
-            Annotation = new AnnotationConfiguration();
-            Comparison = new ComparisonConfiguration();
-            Conversion = new ConversionConfiguration();
-            Editor = new EditorConfiguration();
-            Metadata = new MetadataConfiguration();
-            Search = new SearchConfiguration();
+            this.Server = new ServerConfiguration();
+            this.Application = new ApplicationConfiguration();
+            this.Signature = new SignatureConfiguration();
+            this.Viewer = new ViewerConfiguration();
+            this.Common = new CommonConfiguration();
+            this.Annotation = new AnnotationConfiguration();
+            this.Comparison = new ComparisonConfiguration();
+            this.Conversion = new ConversionConfiguration();
+            this.Editor = new EditorConfiguration();
+            this.Metadata = new MetadataConfiguration();
+            this.Search = new SearchConfiguration();
         }
-
 
         public EditorConfiguration GetEditorConfiguration()
         {
-            return Editor;
+            return this.Editor;
         }
 
         public ServerConfiguration GetServerConfiguration()
         {
-            return Server;
+            return this.Server;
         }
 
         public ApplicationConfiguration GetApplicationConfiguration()
         {
-            return Application;
+            return this.Application;
         }
 
         public CommonConfiguration GetCommonConfiguration()
         {
-            return Common;
+            return this.Common;
         }
 
         public ViewerConfiguration GetViewerConfiguration()
         {
-            return Viewer;
+            return this.Viewer;
         }
 
         public AnnotationConfiguration GetAnnotationConfiguration()
         {
-            return Annotation;
+            return this.Annotation;
         }
 
         public SignatureConfiguration GetSignatureConfiguration()
         {
-            return Signature;
+            return this.Signature;
         }
 
         public ComparisonConfiguration GetComparisonConfiguration()
         {
-            return Comparison;
+            return this.Comparison;
         }
 
         public ConversionConfiguration GetConversionConfiguration()
         {
-            return Conversion;
+            return this.Conversion;
         }
 
         public MetadataConfiguration GetMetadataConfiguration()
         {
-            return Metadata;
+            return this.Metadata;
         }
 
         public SearchConfiguration GetSearchConfiguration()
         {
-            return Search;
+            return this.Search;
         }
     }
 }

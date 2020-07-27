@@ -8,14 +8,14 @@ namespace GroupDocs.Total.WebForms
         {
             // Web API configuration and services
             config.EnableCors();
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "ViewerApi",
                 routeTemplate: "{controller}/{action}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+                defaults: new { id = RouteParameter.Optional });
         }
     }
 }
