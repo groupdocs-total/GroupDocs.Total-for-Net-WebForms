@@ -309,7 +309,6 @@
     <Compile Include="Products\Viewer\Cache\ThreadSafeCache.cs" />
     <Compile Include="Products\Viewer\Config\ViewerConfiguration.cs" />
     <Compile Include="Products\Viewer\Controllers\ViewerApiController.cs" />
-    <Compile Include="Products\Viewer\Entity\Web\RotatedPageEntity.cs" />
     <Compile Include="Annotation.aspx.cs">
       <DependentUpon>Annotation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,5 +1,4 @@
 ﻿using GroupDocs.Total.WebForms.Products.Common.Entity.Web;
-using System;
 using System.IO;
 
 namespace GroupDocs.Total.WebForms.Products.Common.Resources
@@ -66,9 +65,9 @@ namespace GroupDocs.Total.WebForms.Products.Common.Resources
         /// <summary>
         /// Generate exception for password error.
         /// </summary>
-        /// <param name="ex">Exception.</param>
-        /// <param name="password">string.</param>
-        /// <returns>ExceptionEntity.</returns>
+        /// <param name="ex">Exception object.</param>
+        /// <param name="password">Document password.</param>
+        /// <returns>Exception entity DTO-object.</returns>
         public ExceptionEntity GenerateException(System.Exception ex, string password)
         {
             // Initiate exception
