@@ -6,23 +6,24 @@ using System;
 
 namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
 {
-    public class ResourceRedactionAnnotator : BaseAnnotator
+    public class TextUnderlineAnnotator : AbstractTextAnnotator
     {
-        private ResourcesRedactionAnnotation resourcesRedactionAnnotation;
+        private UnderlineAnnotation underlineAnnotation;
 
-        public ResourceRedactionAnnotator(AnnotationDataEntity annotationData, PageInfo pageInfo)
+        public TextUnderlineAnnotator(AnnotationDataEntity annotationData, PageInfo pageInfo)
             : base(annotationData, pageInfo)
         {
-            this.resourcesRedactionAnnotation = new ResourcesRedactionAnnotation
+            underlineAnnotation = new UnderlineAnnotation
             {
-                Box = GetBox()
+                Points = GetPoints(annotationData, pageInfo)
             };
         }
 
         public override AnnotationBase AnnotateWord()
         {
-            resourcesRedactionAnnotation = InitAnnotationBase(resourcesRedactionAnnotation) as ResourcesRedactionAnnotation;
-            return resourcesRedactionAnnotation;
+            underlineAnnotation = InitAnnotationBase(underlineAnnotation) as UnderlineAnnotation;
+            underlineAnnotation.FontColor = 1201033;
+            return underlineAnnotation;
         }
 
         public override AnnotationBase AnnotatePdf()
@@ -32,12 +33,14 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
 
         public override AnnotationBase AnnotateCells()
         {
-            throw new NotSupportedException(string.Format(Message, annotationData.type));
+            return AnnotateWord();
         }
 
         public override AnnotationBase AnnotateSlides()
         {
-            return AnnotateWord();
+            underlineAnnotation = InitAnnotationBase(underlineAnnotation) as UnderlineAnnotation;
+            underlineAnnotation.FontColor = 0;
+            return underlineAnnotation;
         }
 
         public override AnnotationBase AnnotateImage()
@@ -47,12 +50,12 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
 
         public override AnnotationBase AnnotateDiagram()
         {
-            return AnnotateWord();
+            throw new NotSupportedException(string.Format(Message, annotationData.type));
         }
 
         protected override AnnotationType GetType()
         {
-            return AnnotationType.ResourcesRedaction;
+            return AnnotationType.TextUnderline;
         }
     }
 }
