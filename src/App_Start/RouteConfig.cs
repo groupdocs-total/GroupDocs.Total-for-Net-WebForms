@@ -14,8 +14,7 @@ namespace GroupDocs.Total.WebForms
             routes.MapPageRoute(
              "Total",
              "",
-             "~/Total.aspx"
-         );
+             "~/Total.aspx");
         }
     }
 }

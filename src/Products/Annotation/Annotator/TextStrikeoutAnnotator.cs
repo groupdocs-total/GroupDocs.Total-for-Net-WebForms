@@ -6,33 +6,35 @@ using System;
 
 namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
 {
-    public class ResourceRedactionAnnotator : BaseAnnotator
+    public class TexStrikeoutAnnotator : AbstractTextAnnotator
     {
-        private ResourcesRedactionAnnotation resourcesRedactionAnnotation;
+        private StrikeoutAnnotation strikeoutAnnotation;
 
-        public ResourceRedactionAnnotator(AnnotationDataEntity annotationData, PageInfo pageInfo)
+        public TexStrikeoutAnnotator(AnnotationDataEntity annotationData, PageInfo pageInfo)
             : base(annotationData, pageInfo)
         {
-            this.resourcesRedactionAnnotation = new ResourcesRedactionAnnotation
+            strikeoutAnnotation = new StrikeoutAnnotation
             {
-                Box = GetBox()
+                Points = GetPoints(annotationData, pageInfo)
             };
         }
 
         public override AnnotationBase AnnotateWord()
         {
-            resourcesRedactionAnnotation = InitAnnotationBase(resourcesRedactionAnnotation) as ResourcesRedactionAnnotation;
-            return resourcesRedactionAnnotation;
+            strikeoutAnnotation = InitAnnotationBase(strikeoutAnnotation) as StrikeoutAnnotation;
+            return strikeoutAnnotation;
         }
 
         public override AnnotationBase AnnotatePdf()
         {
-            return AnnotateWord();
+            strikeoutAnnotation = InitAnnotationBase(strikeoutAnnotation) as StrikeoutAnnotation;
+            this.strikeoutAnnotation.FontColor = 0;
+            return strikeoutAnnotation;
         }
 
         public override AnnotationBase AnnotateCells()
         {
-            throw new NotSupportedException(string.Format(Message, annotationData.type));
+            return AnnotateWord();
         }
 
         public override AnnotationBase AnnotateSlides()
@@ -47,12 +49,12 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
 
         public override AnnotationBase AnnotateDiagram()
         {
-            return AnnotateWord();
+            throw new NotSupportedException(string.Format(Message, annotationData.type));
         }
 
         protected override AnnotationType GetType()
         {
-            return AnnotationType.ResourcesRedaction;
+            return AnnotationType.TextStrikeout;
         }
     }
 }

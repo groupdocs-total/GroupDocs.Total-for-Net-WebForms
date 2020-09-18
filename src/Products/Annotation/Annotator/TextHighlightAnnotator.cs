@@ -6,23 +6,23 @@ using System;
 
 namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
 {
-    public class ResourceRedactionAnnotator : BaseAnnotator
+    public class TextHighlightAnnotator : AbstractTextAnnotator
     {
-        private ResourcesRedactionAnnotation resourcesRedactionAnnotation;
+        private HighlightAnnotation highlightAnnotation;
 
-        public ResourceRedactionAnnotator(AnnotationDataEntity annotationData, PageInfo pageInfo)
+        public TextHighlightAnnotator(AnnotationDataEntity annotationData, PageInfo pageInfo)
             : base(annotationData, pageInfo)
         {
-            this.resourcesRedactionAnnotation = new ResourcesRedactionAnnotation
+            highlightAnnotation = new HighlightAnnotation
             {
-                Box = GetBox()
+                Points = GetPoints(annotationData, pageInfo)
             };
         }
 
         public override AnnotationBase AnnotateWord()
         {
-            resourcesRedactionAnnotation = InitAnnotationBase(resourcesRedactionAnnotation) as ResourcesRedactionAnnotation;
-            return resourcesRedactionAnnotation;
+            highlightAnnotation = InitAnnotationBase(highlightAnnotation) as HighlightAnnotation;
+            return highlightAnnotation;
         }
 
         public override AnnotationBase AnnotatePdf()
@@ -32,7 +32,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
 
         public override AnnotationBase AnnotateCells()
         {
-            throw new NotSupportedException(string.Format(Message, annotationData.type));
+            return AnnotateWord();
         }
 
         public override AnnotationBase AnnotateSlides()
@@ -47,12 +47,12 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
 
         public override AnnotationBase AnnotateDiagram()
         {
-            return AnnotateWord();
+            throw new NotSupportedException(string.Format(Message, annotationData.type));
         }
 
         protected override AnnotationType GetType()
         {
-            return AnnotationType.ResourcesRedaction;
+            return AnnotationType.TextHighlight;
         }
     }
 }

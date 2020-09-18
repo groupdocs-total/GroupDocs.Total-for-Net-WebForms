@@ -4,16 +4,16 @@ using System.IO;
 namespace GroupDocs.Total.WebForms.Products.Common.Util.Comparator
 {
     /// <summary>
-    /// FileNameComparator
+    /// FileNameComparator.
     /// </summary>
     public class FileNameComparator : IComparer<string>
     {
         /// <summary>
-        /// Compare file names
+        /// Compare file names.
         /// </summary>
-        /// <param name="x">string</param>
-        /// <param name="y">string</param>
-        /// <returns></returns>
+        /// <param name="x">First string to compare.</param>
+        /// <param name="y">Second string to compare.</param>
+        /// <returns>Compare result as integer.</returns>
         public int Compare(string x, string y)
         {
             string strExt1 = Path.GetFileName(x);
@@ -21,11 +21,11 @@ namespace GroupDocs.Total.WebForms.Products.Common.Util.Comparator
 
             if (strExt1.Equals(strExt2))
             {
-                return x.CompareTo(y);
+                return string.CompareOrdinal(x, y);
             }
             else
             {
-                return strExt1.CompareTo(strExt2);
+                return string.CompareOrdinal(strExt1, strExt2);
             }
         }
     }
