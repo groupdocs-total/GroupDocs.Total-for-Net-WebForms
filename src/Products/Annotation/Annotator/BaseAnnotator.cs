@@ -142,6 +142,7 @@ namespace GroupDocs.Total.WebForms.Products.Annotation.Annotator
                 case "Portable Document Format":
                     return AnnotatePdf();
                 case "Microsoft Word":
+                case "Open Document Text":
                     return AnnotateWord();
                 case "Rich Text Format":
                     return AnnotateWord();
