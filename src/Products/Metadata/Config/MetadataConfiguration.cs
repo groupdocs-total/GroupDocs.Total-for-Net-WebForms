@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System.IO;
 using GroupDocs.Total.WebForms.Products.Common.Config;
 using GroupDocs.Total.WebForms.Products.Common.Util.Parser;
-using GroupDocs.Total.WebForms.Products.Metadata.Util.Directory;
+using GroupDocs.Total.WebForms.Products.Metadata.Util;
 
 namespace GroupDocs.Total.WebForms.Products.Metadata.Config
 {
