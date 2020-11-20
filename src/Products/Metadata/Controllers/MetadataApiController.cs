@@ -20,7 +20,7 @@ namespace GroupDocs.Total.WebForms.Products.Metadata.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MetadataApiController : ApiController
     {
-                private readonly Common.Config.GlobalConfiguration globalConfiguration;
+        private readonly Common.Config.GlobalConfiguration globalConfiguration;
 
         private readonly MetadataService metadataService;
 
@@ -31,10 +31,9 @@ namespace GroupDocs.Total.WebForms.Products.Metadata.Controllers
         /// </summary>
         public MetadataApiController()
         {
-            // Check if filesDirectory is relative or absolute path
             globalConfiguration = new Common.Config.GlobalConfiguration();
-            metadataService = new MetadataService();
-            fileService = new FileService();
+            metadataService = new MetadataService(globalConfiguration.GetMetadataConfiguration());
+            fileService = new FileService(globalConfiguration.GetMetadataConfiguration());
         }
 
         /// <summary>
@@ -56,9 +55,13 @@ namespace GroupDocs.Total.WebForms.Products.Metadata.Controllers
         [Route("metadata/loadFileTree")]
         public HttpResponseMessage LoadFileTree()
         {
+            if (!globalConfiguration.GetMetadataConfiguration().browse)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, fileService.LoadFileTree(globalConfiguration));
+                return Request.CreateResponse(HttpStatusCode.OK, fileService.LoadFileTree());
             }
             catch (Exception ex)
             {
@@ -106,6 +109,26 @@ namespace GroupDocs.Total.WebForms.Products.Metadata.Controllers
         }
 
         /// <summary>
+        /// Removes all available metadata properties from the document
+        /// </summary>
+        /// <param name="postedData"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("metadata/clean")]
+        public HttpResponseMessage CleanMetadata(PostedDataDto postedData)
+        {
+            try
+            {
+                metadataService.CleanMetadata(postedData);
+                return Request.CreateResponse(HttpStatusCode.OK, new object());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Resources().GenerateException(ex));
+            }
+        }
+
+        /// <summary>
         /// Remove file properties
         /// </summary>
         /// <param name="postedData"></param>
@@ -138,7 +161,7 @@ namespace GroupDocs.Total.WebForms.Products.Metadata.Controllers
             try
             {
                 // return document description
-                return Request.CreateResponse(HttpStatusCode.OK, fileService.LoadDocument(postedData, globalConfiguration));
+                return Request.CreateResponse(HttpStatusCode.OK, fileService.LoadDocument(postedData));
             }
             catch (DocumentProtectedException ex)
             {
@@ -161,19 +184,42 @@ namespace GroupDocs.Total.WebForms.Products.Metadata.Controllers
         {
             if (!string.IsNullOrEmpty(path))
             {
-                if (File.Exists(path))
+                string absolutePath = globalConfiguration.GetMetadataConfiguration().GetAbsolutePath(path);
+                if (File.Exists(absolutePath))
                 {
                     HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-                    var fileStream = new FileStream(path, FileMode.Open);
+                    var fileStream = new FileStream(absolutePath, FileMode.Open);
                     response.Content = new StreamContent(fileStream);
                     response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                     response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
-                    response.Content.Headers.ContentDisposition.FileName = Path.GetFileName(path);
+                    response.Content.Headers.ContentDisposition.FileName = Path.GetFileName(absolutePath);
                     return response;
                 }
             }
 
             return new HttpResponseMessage(HttpStatusCode.NotFound);
+        }
+
+        /// <summary>
+        /// Exports all detected metadata properties to an Excel workbook
+        /// </summary>
+        /// <param name="postedData"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("metadata/export")]
+        public HttpResponseMessage ExportProperties(PostedDataDto postedData)
+        {
+            var result = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new ByteArrayContent(metadataService.ExportMetadata(postedData))
+            };
+            result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            {
+                FileName = "ExportedProperties.xlsx"
+            };
+            result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+
+            return result;
         }
 
         /// <summary>
@@ -184,9 +230,13 @@ namespace GroupDocs.Total.WebForms.Products.Metadata.Controllers
         [Route("metadata/uploadDocument")]
         public HttpResponseMessage UploadDocument()
         {
+            if (!globalConfiguration.GetMetadataConfiguration().upload)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, fileService.UploadDocument(HttpContext.Current.Request, globalConfiguration));
+                return Request.CreateResponse(HttpStatusCode.OK, fileService.UploadDocument(HttpContext.Current.Request));
             }
             catch (Exception ex)
             {
