@@ -1,9 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
-using System.IO;
-using GroupDocs.Total.WebForms.Products.Common.Config;
+﻿using GroupDocs.Total.WebForms.Products.Common.Config;
 using GroupDocs.Total.WebForms.Products.Common.Util.Parser;
-using GroupDocs.Total.WebForms.Products.Metadata.Util.Directory;
+using GroupDocs.Total.WebForms.Products.Metadata.Util;
+using Newtonsoft.Json;
+using System;
+using System.IO;
 
 namespace GroupDocs.Total.WebForms.Products.Metadata.Config
 {
@@ -12,7 +12,6 @@ namespace GroupDocs.Total.WebForms.Products.Metadata.Config
     /// </summary>
     public class MetadataConfiguration : CommonConfiguration
     {
-        [JsonProperty]
         private string filesDirectory = "DocumentSamples/Metadata";
 
         [JsonProperty]
@@ -50,6 +49,8 @@ namespace GroupDocs.Total.WebForms.Products.Metadata.Config
             preloadPageCount = valuesGetter.GetIntegerPropertyValue("preloadPageCount", preloadPageCount);
             htmlMode = valuesGetter.GetBooleanPropertyValue("htmlMode", htmlMode);
             cache = valuesGetter.GetBooleanPropertyValue("cache", cache);
+            browse = valuesGetter.GetBooleanPropertyValue("browse", browse);
+            upload = valuesGetter.GetBooleanPropertyValue("upload", upload);
         }
 
         public void SetFilesDirectory(string filesDirectory)
@@ -100,6 +101,25 @@ namespace GroupDocs.Total.WebForms.Products.Metadata.Config
         public bool GetCache()
         {
             return cache;
+        }
+
+        public string GetAbsolutePath(string filePath)
+        {
+            if (!Path.IsPathRooted(filePath))
+            {
+                return Path.Combine(GetFilesDirectory(), filePath);
+            }
+            string absolutePath = Path.GetFullPath(filePath);
+            string fileDirectory = Path.GetFullPath(GetFilesDirectory());
+            if (!fileDirectory.EndsWith(Path.DirectorySeparatorChar.ToString()))
+            {
+                fileDirectory += Path.DirectorySeparatorChar;
+            }
+            if (!absolutePath.StartsWith(fileDirectory))
+            {
+                throw new ArgumentException("Invalid file path");
+            }
+            return absolutePath;
         }
     }
 }

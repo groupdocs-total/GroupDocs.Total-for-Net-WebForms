@@ -36,10 +36,5 @@ namespace GroupDocs.Total.WebForms.Products.Common.Entity.Web
         /// Collection of the document pages with their data.
         /// </summary>
         public List<int> pages { get; set; }
-
-        /// <summary>
-        /// Collection of the document properties with their data.
-        /// </summary>
-        public List<FilePropertyEntity> properties { get; set; }
     }
 }
