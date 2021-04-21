@@ -45,7 +45,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GroupDocs.Annotation, Version=20.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\GroupDocs.Annotation.20.11.0\lib\net20\GroupDocs.Annotation.dll</HintPath>
+      <HintPath>..\packages\GroupDocs.Annotation.21.2.0\lib\net20\GroupDocs.Annotation.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="GroupDocs.Comparison, Version=20.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\GroupDocs.Comparison.20.6.0\lib\net20\GroupDocs.Comparison.dll</HintPath>
